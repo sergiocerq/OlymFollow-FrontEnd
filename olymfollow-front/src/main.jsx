@@ -4,11 +4,11 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Landing } from "./components/Landing/Landing.jsx";
-import { Login } from "./components/Login/Login.jsx";
 import { Error } from "./components/ErrorPage/Error.jsx";
 import { QuadroMedalhas } from "./components/Medalhas/QuadroMedalhas.jsx";
 import { ListaPaises } from "./components/Paises/ListaPaises.jsx";
 import { ListaEsportes } from "./components/Esportes/Esportes.jsx";
+import Login from "./components/Login/Login.jsx";
 
 const isAuthenticated = () => localStorage.getItem("token") !== null;
 const ProtectedRoute = ({ children }) => (isAuthenticated() ? children : null);
@@ -21,9 +21,7 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: (
-      <ProtectedRoute>
         <Login />
-      </ProtectedRoute>
     ),
     errorElement: <Error />,
   },
