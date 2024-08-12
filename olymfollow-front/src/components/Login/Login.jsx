@@ -1,10 +1,12 @@
 import React from "react";
 import "./login.css";
 import { useLogin } from "./LoginHooks";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
   const { login, setLogin, showPassword, setShowPassword, handleSubmit } = useLogin();
+  const navigate = useNavigate()
 
   return (
     <>
@@ -15,6 +17,7 @@ const Login = () => {
             <input
               placeholder="Digite o email"
               type="email"
+              name="email"
               onChange={(e) => {
                 setLogin({ ...login, email: e.target.value });
               }}
@@ -31,6 +34,7 @@ const Login = () => {
           </div>
           <div className="input-container">
             <input
+              name="password"
               placeholder="Digite a senha"
               type={showPassword ? "text" : "password"}
               onChange={(e) => {
@@ -64,11 +68,11 @@ const Login = () => {
             </span>
           </div>
           <button className="submit" type="submit" onClick={handleSubmit}>
-            Sign in
+            Entrar
           </button>
           <p className="signup-link">
             Sem conta?
-            <a href="">Cadastrar</a>
+            <a onClick={() => navigate("/register")}>Cadastrar</a>
           </p>
         </form>
       </div>
