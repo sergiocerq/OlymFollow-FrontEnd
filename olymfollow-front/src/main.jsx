@@ -3,6 +3,12 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Landing } from "./components/Landing/Landing.jsx";
+import { Login } from "./components/Login/Login.jsx";
+import { Error } from "./components/ErrorPage/Error.jsx";
+import { ListaMedalhas } from "./components/Medalhas/ListaMedalhas.jsx";
+import { ListaPaises } from "./components/Paises/ListaPaises.jsx";
+import { ListaEsportes } from "./components/Esportes/Esportes.jsx";
 
 const isAuthenticated = () => localStorage.getItem("token") !== null;
 const ProtectedRoute = ({ children }) => (isAuthenticated() ? children : null);
@@ -10,17 +16,44 @@ const ProtectedRoute = ({ children }) => (isAuthenticated() ? children : null);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Landing />,
   },
-  // {
-  //   path: "/landing",
-  //   element: (
-  //     <ProtectedRoute>
-  //       <Landing/>
-  //     </ProtectedRoute>
-  //   ),
-  //   errorElement: <ErrorPage />,
-  // }
+  {
+    path: "/login",
+    element: (
+      <ProtectedRoute>
+        <Login />
+      </ProtectedRoute>
+    ),
+    errorElement: <Error />,
+  },
+  {
+    path: "/medalhas",
+    element: (
+      <ProtectedRoute>
+        <ListaMedalhas />
+      </ProtectedRoute>
+    ),
+    errorElement: <Error />,
+  },
+  {
+    path: "/paises",
+    element: (
+      <ProtectedRoute>
+        <ListaPaises />
+      </ProtectedRoute>
+    ),
+    errorElement: <Error />,
+  },
+  {
+    path: "/esportes",
+    element: (
+      <ProtectedRoute>
+        <ListaEsportes />
+      </ProtectedRoute>
+    ),
+    errorElement: <Error />,
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
