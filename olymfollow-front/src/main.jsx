@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Landing } from "./components/Landing/Landing.jsx";
 import { Login } from "./components/Login/Login.jsx";
 import { Error } from "./components/ErrorPage/Error.jsx";
-import { ListaMedalhas } from "./components/Medalhas/ListaMedalhas.jsx";
+import { QuadroMedalhas } from "./components/Medalhas/QuadroMedalhas.jsx";
 import { ListaPaises } from "./components/Paises/ListaPaises.jsx";
 import { ListaEsportes } from "./components/Esportes/Esportes.jsx";
 
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     path: "/medalhas",
     element: (
       <ProtectedRoute>
-        <ListaMedalhas />
+        <QuadroMedalhas />
       </ProtectedRoute>
     ),
     errorElement: <Error />,
