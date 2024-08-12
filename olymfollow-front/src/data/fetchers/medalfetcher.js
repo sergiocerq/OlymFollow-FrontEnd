@@ -12,17 +12,17 @@ import { DataFetcher } from "./DataFetcher";
  */
 
 export class MedalhaFetcher extends DataFetcher {
-  static async getMedals() {
+  async getMedals() {
     const data = await this.httpService.get("/Olymfollow/medalhas");
     return data.map((medal) => new QuadroMedalha(medal));
   }
 
-  static async getMedalsByCountry(country) {
+  async getMedalsByCountry(country) {
     const data = await this.httpService.get(`/OlymFollow/medalhas/${country}`);
     return data.map((medal) => new QuadroMedalha(medal));
   }
 
-  static async getLatestMedals() {
+  async getLatestMedals() {
     const data = await this.httpService.get("/OlymFollow/medalhas/latest");
     return data.map((medal) => new QuadroMedalha(medal));
   }

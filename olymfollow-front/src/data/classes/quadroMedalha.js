@@ -1,12 +1,12 @@
 export class QuadroMedalha {
-  constructor(
+  constructor({
     id,
     nome,
     numberOfGolds,
     numberOfSilvers,
     numberOfBronze,
-    numberOfMedal
-  ) {
+    numberOfMedal,
+  }) {
     this.id = id;
     this.nome = nome;
     this.numberOfGolds = numberOfGolds;

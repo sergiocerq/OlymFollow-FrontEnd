@@ -1,5 +1,5 @@
 export class Esporte {
-  constructor(id, nome) {
+  constructor({id, nome}) {
     this.nome = nome;
     this.id = id;
   }

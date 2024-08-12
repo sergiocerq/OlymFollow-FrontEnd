@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./login.css";
+import { FetcherFactory } from "../../data/fetchers/FetcherFactory";
 
 const fetcherFactory = new FetcherFactory();
 

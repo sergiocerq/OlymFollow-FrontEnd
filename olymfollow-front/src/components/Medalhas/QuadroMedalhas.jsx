@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { QuadroMedalha } from "../../data/classes/quadroMedalha.js";
 import "./medalhas.css";
+import { FetcherFactory } from "../../data/fetchers/FetcherFactory.js";
 
-const fecherFactory = new FecherFactory();
+const fetcherFactory = new FetcherFactory();
 
-export const ListaMedalhas = () => {
+export const QuadroMedalhas = () => {
 
   const [quadroMedalhas, setQuadroMedalhas] = useState();
-  console.log(quadroMedalhas)
 
   useEffect(() => {
     const fetchMedalhas = async () => {
@@ -19,5 +19,5 @@ export const ListaMedalhas = () => {
     fetchMedalhas();
   }, [])
 
-  return <></>;
+  return <>estou aqui no quadro de medalhas!</>;
 };

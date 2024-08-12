@@ -1,0 +1,14 @@
+.divider {
+  width: 100%;
+  background-color: #f7f7f7;
+  display: grid;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+.divider-child {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e0e0e0; 
+  padding: 2rem;
+  max-height: 100px;
+}

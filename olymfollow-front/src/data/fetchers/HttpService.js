@@ -19,7 +19,7 @@ export class HttpService {
     this.baseURL = "http://localhost:8080";
     this.headers = {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
     };
     this.client = axios.create({
       baseURL: this.baseURL,

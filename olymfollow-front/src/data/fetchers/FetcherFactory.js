@@ -4,7 +4,7 @@ import { LoginFetcher } from "./login";
 import { MedalhaFetcher } from "./medalfetcher";
 import { PaisFetcher } from "./paisfetcher";
 
-export class FecherFactory {
+export class FetcherFactory {
 
   constructor() {
     this.httpService = new HttpService();
