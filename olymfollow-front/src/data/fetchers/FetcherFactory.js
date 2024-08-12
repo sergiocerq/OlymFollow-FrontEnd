@@ -3,6 +3,7 @@ import { HttpService } from "./HttpService";
 import { LoginFetcher } from "./login";
 import { MedalhaFetcher } from "./medalfetcher";
 import { PaisFetcher } from "./paisfetcher";
+import { RegisterFetcher } from "./Register";
 
 export class FetcherFactory {
 
@@ -24,5 +25,9 @@ export class FetcherFactory {
 
   createLoginFetcher() {
     return new LoginFetcher(this.httpService);
+  }
+
+  createRegisterFetcher() {
+    return new RegisterFetcher(this.httpService);
   }
 }
