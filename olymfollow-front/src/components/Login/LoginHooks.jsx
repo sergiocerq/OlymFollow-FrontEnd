@@ -9,7 +9,9 @@ export const useLogin = () => {
 
   const handleSubmit = async () => {
     const loginFetcher = fetcherFactory.createLoginFetcher();
-    const user = await loginFetcher.login('login',login.email, login.password);
+    const user = await loginFetcher.login(login.email, login.password);
+
+    console.log(user)
   };
 
   return { login, setLogin, showPassword, setShowPassword, handleSubmit };

@@ -15,7 +15,7 @@ export class FetcherFactory {
     return new EsporteFetcher(this.httpService);
   }
 
-  createEsporteFetcher() {
+  createPaisFetcher() {
     return new PaisFetcher(this.httpService);
   }
 

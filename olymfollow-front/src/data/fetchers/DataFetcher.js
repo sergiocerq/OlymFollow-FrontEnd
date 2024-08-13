@@ -1,11 +1,9 @@
-import axios from "axios";
+import { HttpService } from "./HttpService";
 
 /**
  * 
  * @class DataFetcher
  * @description Classe que representa um fetcher de dados
- * 
- * @param {Object} httpService - Serviço HTTP a ser utilizado
  */
 export class DataFetcher {
   constructor(httpService) {

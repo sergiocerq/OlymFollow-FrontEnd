@@ -8,7 +8,7 @@ import { DataFetcher } from "./DataFetcher";
  */
 export class LoginFetcher extends DataFetcher {
   async login(email, senha) {
-    const response = await super.httpService.client.login("/login", email, senha);
+    const response = await this.httpService.login("/authenticate", email, senha);
     return response.data;
   }
 }

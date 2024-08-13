@@ -67,7 +67,7 @@ const Login = () => {
               )}
             </span>
           </div>
-          <button className="submit" type="submit" onClick={handleSubmit}>
+          <button className="submit" type="button" onClick={handleSubmit}>
             Entrar
           </button>
           <p className="signup-link">
