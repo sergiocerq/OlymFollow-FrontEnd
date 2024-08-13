@@ -72,9 +72,9 @@ export const Landing = () => {
           }}
         >
           <em style={{ maxWidth: "30%", fontSize: "1.6rem", margin: "0 5rem" }}>
-            No OlympicsFollow, você tem acesso instantâneo às atualizações do quadro
-            de medalhas das Olimpíadas. Saiba quais países estão no topo e quem
-            está ganhando mais medalhas em tempo real.
+            No OlympicsFollow, você tem acesso instantâneo às atualizações do
+            quadro de medalhas das Olimpíadas. Saiba quais países estão no topo
+            e quem está ganhando mais medalhas em tempo real.
           </em>
           <div
             style={{
@@ -95,12 +95,6 @@ export const Landing = () => {
         <img src="" alt="Foto da tabela com as opções dos países..." />
         <Divider />
       </div>
-      <div
-        style={{
-          paddingBottom: "5rem",
-        }}
-      ></div>
-      <QuadroMedalhas />
     </>
   );
 };
