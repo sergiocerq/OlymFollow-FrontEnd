@@ -8,7 +8,7 @@
 .divider-child {
   border-width: 1px;
   border-style: solid;
-  border-color: #e0e0e0; 
+  border-color: #e0e0e0;
   padding: 2rem;
   max-height: 100px;
 }
@@ -44,4 +44,41 @@ button:hover > svg {
 button:hover {
   box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
   transform: translateY(-2px);
+}
+
+.button-login {
+  padding: 0.8em 1.8em;
+  border: 2px solid #111;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  transition: 0.3s;
+  z-index: 1;
+  font-family: inherit;
+  color: #111;
+}
+
+.button-login::before {
+  content: "";
+  width: 0;
+  height: 300%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #111;
+  transition: 0.5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.button-login:hover::before {
+  width: 105%;
+}
+
+.button-login:hover {
+  color: #cacaca;
 }

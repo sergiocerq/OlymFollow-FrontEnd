@@ -123,7 +123,7 @@ const Register = () => {
               </button>
               <p className="signup-link">
                 Já possui conta?
-                <a onClick={() => navigator("/login")}>Entrar</a>
+                <a onClick={() => navigator("/login")} style={{ color: "#2d9ffc" }}>Entrar</a>
               </p>
             </form>
           </div>

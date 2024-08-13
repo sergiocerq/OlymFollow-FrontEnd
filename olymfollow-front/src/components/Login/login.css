@@ -3,8 +3,7 @@
   padding: 1rem;
   max-width: 325px;
   border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px #0000007a,
-    0 4px 6px -2px #00000096;
+  box-shadow: 0 10px 15px -3px #0000007a, 0 4px 6px -2px #00000096;
   margin: 0 auto;
 }
 
@@ -74,7 +73,7 @@
 }
 
 .signup-link {
-  color: #6b7280;
+  font-weight: 700;
   font-size: 0.875rem;
   line-height: 1.25rem;
   text-align: center;
@@ -82,8 +81,15 @@
 }
 
 .signup-link a {
-  margin-left: 2rem;
-  text-decoration: underline;
+  margin-left: 1rem;
+  border-bottom-color: transparent;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
+.signup-link a:hover {
+  transition: 0.5s;
+  border-bottom-color: #2d9ffc;
 }
 
 .svg-icon-input-psswd {

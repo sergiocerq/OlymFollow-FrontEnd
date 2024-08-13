@@ -74,8 +74,9 @@ export class HttpService {
         email,
         password,
       });
-      console.log(response)
-      return response.data;
+      return {
+        token: response.headers.authorization
+      };
     } catch (error) {
       console.error(error);
       return [];
