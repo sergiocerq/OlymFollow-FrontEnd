@@ -19,5 +19,9 @@ export const QuadroMedalhas = () => {
     fetchMedalhas();
   }, [])
 
-  return <>estou aqui no quadro de medalhas!</>;
+  return (
+    <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+      <h1>ESTOU AQUI NO QUADRO DE MEDALHAS</h1>
+    </div>
+  );
 };

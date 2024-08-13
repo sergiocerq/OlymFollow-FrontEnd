@@ -8,7 +8,7 @@ import { DataFetcher } from "./DataFetcher";
  */
 export class RegisterFetcher extends DataFetcher {
   async register(user) {
-    const response = await super.httpService.client.post("/register", user);
+    const response = await this.httpService.post("/register", user);
     return response.data;
   }
 }

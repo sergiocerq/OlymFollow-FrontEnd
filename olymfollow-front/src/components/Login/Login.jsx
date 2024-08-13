@@ -2,6 +2,7 @@ import React from "react";
 import "./login.css";
 import { useLogin } from "./LoginHooks";
 import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 
 const Login = () => {
 
@@ -10,6 +11,7 @@ const Login = () => {
 
   return (
     <>
+    <Toaster position="top-right"/>
       <div className="main-div-form-login">
         <form className="form">
           <p className="form-title">Entre na sua conta</p>
