@@ -3,6 +3,7 @@ import { FetcherFactory } from "../../data/fetchers/FetcherFactory";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { styleToastError } from "../../styles";
+import {handleToken} from "../../utils.js";
 
 const fetcherFactory = new FetcherFactory();
 
@@ -35,10 +36,11 @@ export const useLogin = () => {
 
       const loginFetcher = fetcherFactory.createLoginFetcher();
       const user = await loginFetcher.login(login.email, login.password);
+
+      let token = handleToken(user.headers['authorization']);
+      sessionStorage.setItem("token", token);
       
-      sessionStorage.setItem("token", user.token);
-      
-      if (user.token) {
+      if (token) {
         navigate("/");
       }
     }

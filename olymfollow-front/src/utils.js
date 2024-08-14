@@ -21,3 +21,9 @@ export const longFormatDateToIntl = (date) => {
     dateStyle: "long",
   }).format(new Date(date));
 }
+
+export const handleToken = (token) => {
+  if (!token || token === "") return "";
+  return token.split(" ")[1];
+
+}
