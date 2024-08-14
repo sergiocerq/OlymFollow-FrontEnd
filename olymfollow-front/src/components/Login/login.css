@@ -68,8 +68,13 @@
       }
 
       > span > svg {
+        fill: #b4b4b4;
         height: 1.4rem;
         margin-right: 0.8rem;
+      }
+
+      > span:nth-child(1) {
+        cursor: default;
       }
     }
 
@@ -140,4 +145,8 @@
       transform: none;
     }
   }
+}
+
+.svg-icon-input-psswd {
+  cursor: pointer;
 }

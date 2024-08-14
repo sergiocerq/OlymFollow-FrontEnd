@@ -1,0 +1,49 @@
+.quadro-medalhas {
+  width: 90%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 2rem;
+  font-family: Inknut Antiqua;
+
+  > thead {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    > tr {
+      border-bottom: 3px solid #929292;
+      > th {
+        padding: 1rem 0;
+
+        > div {
+          display: inline-block;
+          padding: 0.5rem;
+          width: 1%;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  > tbody {
+    > tr {
+      border-top: 2px solid #ececec;
+      transition: 0.5s;
+
+      > td {
+        padding: 0.8rem 0;
+      }
+    }
+  }
+}
+
+.gold {
+  background-color: #ffd700;
+}
+
+.silver {
+  background-color: #c0c0c0;
+}
+
+.bronze {
+  background-color: #cd7f32;
+}

@@ -34,7 +34,7 @@ export const Landing = () => {
               <div>
                   <h1
                       style={{
-                          fontWeight: "900",
+                          fontWeight: "800",
                           fontFamily: "Inknut Antiqua",
                           fontSize: "5rem",
                       }}
@@ -107,6 +107,7 @@ export const Landing = () => {
         <img src="" alt="Foto da tabela com as opções dos países..." />
         <Divider />
       </div>
+        <QuadroMedalhas/>
     </>
   );
 };
