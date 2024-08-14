@@ -70,11 +70,11 @@
   
   .submit:active {
     transform: scale(0.95);
-    background-color: #6624ff;
+    /* background-color: #6624ff; */
   }
   
   .signup-link {
-    color: #6b7280;
+    color: #aaaaaa;
     font-size: 0.875rem;
     line-height: 1.25rem;
     text-align: center;
@@ -82,9 +82,18 @@
   }
   
   .signup-link a {
-    margin-left: 2rem;
+    margin-left: 1rem;
     text-decoration: underline;
     cursor: pointer;
+    padding-bottom: 0.3rem;
+    transition: 0.5s;
+    border-bottom: 2px solid transparent;
+    color: #2d9ffc;
+  }
+
+  .signup-link a:hover {
+    border-bottom: 2px solid #2d9ffc;
+    font-weight: 500;
   }
   
   .svg-icon-input-psswd {

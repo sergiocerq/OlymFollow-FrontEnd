@@ -1,106 +1,143 @@
-.form {
-  background-color: #ffffff;
-  padding: 1rem;
-  max-width: 325px;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px #0000007a, 0 4px 6px -2px #00000096;
-  margin: 0 auto;
-}
-
-.form-title {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  font-weight: 600;
-  text-align: center;
-  color: #000;
-}
-
-.input-container {
-  position: relative;
-}
-
-.input-container input,
-.form button {
-  outline: none;
-  border: 1px solid #e5e7eb;
-  margin: 8px 0;
-}
-
-.input-container input {
-  background-color: #fff;
-  padding: 1rem;
-  padding-right: 3rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  width: 300px;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-.input-container span {
-  display: grid;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  place-content: center;
-}
-
-.input-container span svg {
-  color: #9ca3af;
-  width: 1rem;
-  height: 1rem;
-}
-
-.submit {
-  display: block;
-  padding: 0.75rem 1.25rem;
-  background-color: #4f46e5;
-  color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
-  width: 100%;
-  border-radius: 0.5rem;
-  text-transform: uppercase;
-}
-
-.submit:active {
-  transform: scale(0.95);
-  background-color: #6624ff;
-}
-
-.signup-link {
-  font-weight: 700;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.signup-link a {
-  margin-left: 1rem;
-  border-bottom-color: transparent;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-}
-
-.signup-link a:hover {
-  transition: 0.5s;
-  border-bottom-color: #2d9ffc;
-}
-
-.svg-icon-input-psswd {
-  fill: #b6b6b6;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-.main-div-form-login {
+.main-div-login {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100wh;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
+
+  > .div-lottie-login {
+    width: 40%;
+    left: 0;
+    margin-right: 10rem;
+
+    @media (max-width: 1200px) {
+      display: none;
+    }
+  }
+
+  > form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 2rem;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+    
+    > h1 {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    > p {
+      color: #979797;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    > .div-input-login {
+      width: 90%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      background-color: #e8f0fe;
+      border-radius: 5px;
+      padding: 0.5rem;
+      border: 3px solid transparent;
+      transition: 0.5s;
+
+      > input {
+        padding: 0.5rem;
+        border-radius: 5px;
+        border: none;
+        font-size: 1.3rem;
+        background: #e8f0fe;
+        outline: none;
+        max-width: 90%;
+      }
+
+      > span > svg {
+        height: 1.4rem;
+        margin-right: 0.8rem;
+      }
+    }
+
+    >.div-input-login:hover {
+      border: 3px solid #3e9eff;
+    }
+
+    > button {
+      width: 90%;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      background-color: #0d84fa;
+      color: white;
+      font-size: 1.3rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.5s;
+      max-width: 420px;
+      
+
+      &:hover {
+        box-shadow: 0 0 2px #0d84fa, 0 0 5px #0d84fa, 0 0 20px #0d84fa,
+        0 0 25px #0d84fa;
+        transform: none;
+      }
+    }
+  }
+}
+
+.div-outros-metodos-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem 0;
+
+  > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid transparent;
+
+    > svg,
+    img {
+      margin: 0;
+      height: 2rem;
+      fill: #0d84fa;
+    }
+
+    > p {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #666666;
+    }
+  }
+
+  >button:hover {
+    box-shadow: none;
+    transform: none;
+    transition: 0.5s;
+    border-bottom: 3px solid #0d84fa;
+
+    > svg {
+      transform: none;
+    }
+  }
 }
