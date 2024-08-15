@@ -1,10 +1,23 @@
-//TODO: Add Firebase configuration and export it
+import { initializeApp } from "firebase/app"
+import {getAuth} from "firebase/auth";
+
 export const firebaseConfig = {
-  apiKey: "AIzaSyD-1JQJf8J8J8J8J8J8J8J8J8J8J8J8J8",
-  authDomain: "firebaseapp.com",
-  projectId: "OlympicsFollow",
-  storageBucket: "appspot.com",
-  messagingSenderId: "541sdffsd071",
-  appId: "1:541071:web:A464S0F4G86S04G8",
-  measurementId: "G-0GSGZQ44Q",
+    apiKey: "AIzaSyDzpmH9YmFjiAINJOvgqy521Nh3URq30ug",
+    authDomain: "olymfollow-4bfd2.firebaseapp.com",
+    projectId: "olymfollow-4bfd2",
+    storageBucket: "olymfollow-4bfd2.appspot.com",
+    messagingSenderId: "439079175453",
+    appId: "1:439079175453:web:70b26860924d6b1f2b4df4",
+    measurementId: "G-23NRKQ1LKE"
 };
+
+
+
+var auth = null;
+const app = initializeApp(firebaseConfig);
+
+if(app){
+    auth = getAuth(app);
+}
+
+export default auth;

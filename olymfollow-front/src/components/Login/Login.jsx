@@ -7,11 +7,56 @@ import googleSVG from "../../assets/google-color-svgrepo-com.svg";
 import sportsLogin from "../../assets/LottieLanding.json";
 import animationLogin from "../../assets/AnimationLogin.json"
 import "./login.css";
+import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider  } from "firebase/auth";
+import auth from "../../config/firebaseConfig.js";
 
 const Login = () => {
   const { login, setLogin, showPassword, setShowPassword, handleSubmit } =
     useLogin();
   const navigate = useNavigate();
+
+  async function loginGoogle(){
+    var provider = new GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+    signInWithPopup(auth, provider).then(function
+        (result) {
+      // This gives you a Google Access Token.
+      var name = result.user.displayName;
+      // The signed-in user info.
+      var user1 = result.user;
+      console.log(name);
+      console.log(user1);
+    });
+  }
+
+  async function loginFacebook() {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      // The signed-in user info.
+      const user = result.user;
+
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const accessToken = credential.accessToken;
+
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = FacebookAuthProvider.credentialFromError(error);
+
+      // ...
+    });
+  }
+
 
   return (
     <>
@@ -24,11 +69,11 @@ const Login = () => {
           <h1>Entre na sua conta</h1>
           <p>Selecione um método para realizar o login:</p>
           <div className="div-outros-metodos-login">
-            <button type="button">
+            <button type="button" onClick={()=>loginGoogle()}>
               <img src={googleSVG} alt="" />
               <p>Google</p>
             </button>
-            <button type="button">
+            <button type="button" onClick={() => loginFacebook()}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" />
               </svg>
