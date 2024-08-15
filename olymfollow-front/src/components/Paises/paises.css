@@ -1,0 +1,117 @@
+.quadro-medalhas {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 2rem;
+    font-family: Inknut Antiqua;
+
+    > thead {
+        font-size: 1rem;
+        font-weight: 700;
+
+        > tr {
+            border-bottom: 3px solid #929292;
+            > th {
+                padding: 8px;
+                text-align: left;
+
+                > div {
+                    display: inline-block;
+                    padding: 0.5rem;
+                    width: 1%;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    > tbody {
+        > tr {
+            border-top: 2px solid #ececec;
+            transition: 0.5s;
+
+            > td {
+                padding: 0.8rem 0;
+
+                > img {
+                    width: 2rem;
+                    margin-right: 0.5rem;
+                    margin-left: 1rem;
+                }
+            }
+        }
+    }
+}
+td
+{
+    text-align: center;
+}
+tr:hover {background-color: #ddd;}
+tr:nth-child(even){background-color: #f2f2f2;}
+
+.gold {
+    background-color: #ffd700;
+}
+
+.silver {
+    background-color: #c0c0c0;
+}
+
+.bronze {
+    background-color: #cd7f32;
+}
+
+.mytooltip {
+    display: flex;
+    height: 2em;
+    width: 65px;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border: 0px solid transparent;
+    background-color: rgba(100,77,237,0.08);
+    border-radius: 1.25em;
+    transition: all 0.2s linear;
+    > svg{
+        width: 30px;
+    }
+}
+
+
+
+.mytooltip:hover {
+    background-color: rgba(255, 0, 0, 0.31);
+}
+
+.mytooltip {
+    position: relative;
+}
+
+.mytooltip .tooltiptext {
+    visibility: hidden;
+    width: 20em;
+    background-color: rgba(0, 0, 0, 0.253);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    left: 110%;
+}
+
+.mytooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.253) transparent transparent;
+}
+
+.mytooltip:hover .tooltiptext {
+    visibility: visible;
+}
