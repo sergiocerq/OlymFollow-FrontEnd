@@ -9,6 +9,7 @@ import Login from "./components/Login/Login.jsx";
 import Register from "./components/Register/Register.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {Settings} from "./components/Settings/Settings.jsx";
 
 const isAuthenticated = () => localStorage.getItem("token") !== null;
 const ProtectedRoute = ({ children }) => (isAuthenticated() ? children : null);
@@ -22,6 +23,13 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
         <Login />
+    ),
+    errorElement: <Error />,
+  },
+  {
+    path: "/settings",
+    element: (
+        <Settings />
     ),
     errorElement: <Error />,
   },

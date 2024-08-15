@@ -17,7 +17,7 @@ import axios from "axios";
 export class HttpService {
   
   constructor() {
-    this.baseURL = "http://10.133.17.1:8080/";
+    this.baseURL = "http://localhost:8080/";
     this.headers = {
       "Content-Type": "application/json",
       // "Authorization": `Bearer ${localStorage.getItem("token")}`,
