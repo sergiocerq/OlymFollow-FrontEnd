@@ -5,7 +5,7 @@ import animationData from "../../assets/LoadingAnimation.json";
 import { QuadroMedalhas } from "../Medalhas/QuadroMedalhas";
 import OlympicRings from "../../assets/Olympic_rings.svg";
 import "./landing.css";
-import {Menu, MenuButton, MenuItem, MenuList} from "@chakra-ui/react";
+import { NavBar } from "../navbar/NavBar";
 
 export const Landing = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export const Landing = () => {
 
   return (
     <>
-      {hasToken && <NavBar />}
+      <NavBar />
       <div
         style={{
           display: "flex",
@@ -24,56 +24,56 @@ export const Landing = () => {
           marginTop: "7rem",
         }}
       >
-          <div
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+          }}
+        >
+          <div>
+            <h1
               style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-around",
+                fontWeight: "800",
+                fontFamily: "Inknut Antiqua",
+                fontSize: "4rem",
               }}
-          >
-              <div>
-                  <h1
-                      style={{
-                          fontWeight: "800",
-                          fontFamily: "Inknut Antiqua",
-                          fontSize: "5rem",
-                      }}
-                  >
-                      OlympicsFollow
-                  </h1>
-                  <p
-                      style={{
-                          fontFamily: "Inknut Antiqua",
-                          letterSpacing: "1px",
-                          fontSize: "1.6rem",
-                      }}
-                  >
-                      Informação e Conexão nos <span>Jogos Olímpicos</span>
-                  </p>
-              </div>
-              <div
-                  style={{
-                      width: "30%",
-                  }}
-              >
-                  <Lottie animationData={animationData}/>
-              </div>
+            >
+              OlympicsFollow
+            </h1>
+            <p
+              style={{
+                fontFamily: "Inknut Antiqua",
+                letterSpacing: "1px",
+                fontSize: "1.4rem",
+              }}
+            >
+              Informação e Conexão nos <span>Jogos Olímpicos</span>
+            </p>
           </div>
-          {!hasToken && (
-              <div
-                  style={{
-                      display: "flex",
-                      gap: "2rem",
-                  }}
-              >
-                  <button className="button-login" onClick={() => navigate("/login")}>
-                      Login
-                  </button>
-                  <button
-                      className="button-login"
-                      onClick={() => navigate("/register")}
-                      style={{padding: "0 4rem"}}
-                  >
+          <div
+            style={{
+              width: "40%",
+            }}
+          >
+            <Lottie animationData={animationData} />
+          </div>
+        </div>
+        {!hasToken && (
+          <div
+            style={{
+              display: "flex",
+              gap: "2rem",
+            }}
+          >
+            <button className="button-login" onClick={() => navigate("/login")}>
+              Login
+            </button>
+            <button
+              className="button-login"
+              onClick={() => navigate("/register")}
+              style={{ padding: "0 4rem" }}
+            >
               Cadastrar
             </button>
           </div>
@@ -96,6 +96,7 @@ export const Landing = () => {
             e quem está ganhando mais medalhas em tempo real.
           </em>
         </div>
+
         <Divider />
         <h2>
           Siga <span>seus</span> países favoritos
@@ -107,58 +108,21 @@ export const Landing = () => {
         <img src="" alt="Foto da tabela com as opções dos países..." />
         <Divider />
       </div>
-        <QuadroMedalhas/>
+      <QuadroMedalhas />
     </>
   );
 };
 
-export const NavBar = () => {
-  const navigate = useNavigate();
-
-  return (
-      <nav
-          style={{
-              background: "#e9e9e9",
-              width: "100%",
-              padding: "2rem",
-              display: "flex",
-              justifyContent: "space-between",
-          }}
-      >
-          <img
-              style={{
-                  width: "5%"
-              }}
-              src={OlympicRings} alt="Logo OlympicsFollow"/>
-          <div className="dropdown">
-              <button className="dropbtn">Conta</button>
-              <div className="dropdown-content">
-                  <button
-                      style={{
-                          fontFamily: "Inknut Antiqua"
-                      }}
-                      href="#">Home</button>
-                  <button
-                      style={{
-                          fontFamily: "Inknut Antiqua",
-                      }}
-                      href="#">Sair</button>
-              </div>
-          </div>
-      </nav>
-  );
-};
-
 const Divider = () => {
-    return (
-        <>
-            <div className="divider">
-                {Array.from({length: 22}).map((_, index) => (
-                    <div
-                        className="divider-child"
-                        key={index}
-                        style={{
-                            borderLeft: index % 11 === 0 ? "1px solid black" : "none",
+  return (
+    <>
+      <div className="divider">
+        {Array.from({ length: 22 }).map((_, index) => (
+          <div
+            className="divider-child"
+            key={index}
+            style={{
+              borderLeft: index % 11 === 0 ? "1px solid black" : "none",
             }}
           />
         ))}

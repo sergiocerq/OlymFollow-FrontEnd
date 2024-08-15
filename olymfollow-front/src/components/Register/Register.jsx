@@ -53,6 +53,7 @@ const Register = () => {
           </div>
           <div className="div-input-login">
             <input
+            value={register.username}
               name="name"
               autoComplete="name"
               placeholder="Digite o seu nome"
@@ -81,6 +82,7 @@ const Register = () => {
           </div>
           <div className="div-input-login">
             <input
+            value={register.email}
               placeholder="Digite o email"
               autoComplete="off"
               type="email"
@@ -101,6 +103,7 @@ const Register = () => {
           </div>
           <div className="div-input-login">
             <input
+            value={register.password}
               placeholder="Digite a senha"
               type={showPassword ? "text" : "password"}
               autoComplete="off"
@@ -136,6 +139,7 @@ const Register = () => {
           </div>
           <div className="div-input-login">
             <input
+            value={register.passwordConfirmation}
               className={isInvalidPassword ? "invalid" : ""}
               placeholder="Confirme sua senha"
               autoComplete="off"

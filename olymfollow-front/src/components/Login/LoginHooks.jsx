@@ -36,9 +36,11 @@ export const useLogin = () => {
 
       const loginFetcher = fetcherFactory.createLoginFetcher();
       const user = await loginFetcher.login(login.email, login.password);
+      console.log(user)
 
-      let token = handleToken(user.headers['authorization']);
+      // let token = handleToken(user.headers['authorization']);
       sessionStorage.setItem("token", token);
+
       
       if (token) {
         navigate("/");
