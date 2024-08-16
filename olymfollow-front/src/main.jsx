@@ -11,7 +11,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Settings} from "./components/Settings/Settings.jsx";
 
-const isAuthenticated = () => localStorage.getItem("token") !== null;
+const isAuthenticated = () => sessionStorage.getItem("token") !== null;
 const ProtectedRoute = ({ children }) => (isAuthenticated() ? children : null);
 
 const router = createBrowserRouter([

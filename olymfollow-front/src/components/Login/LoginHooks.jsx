@@ -35,11 +35,14 @@ export const useLogin = () => {
     if(isValidCredentials) {
 
       const loginFetcher = fetcherFactory.createLoginFetcher();
-      const user = await loginFetcher.login(login.email, login.password);
-      console.log(user)
+      const response = await loginFetcher.login(login.email, login.password);
 
-      let token = handleToken(user.headers['authorization']);
+      let token = handleToken(response.headers['authorization']);
+      let userID = response.headers['userid'];
+      console.log(token);
+      console.log(userID);
       sessionStorage.setItem("token", token);
+      sessionStorage.setItem("userID", userID);
 
       
       if (token) {
