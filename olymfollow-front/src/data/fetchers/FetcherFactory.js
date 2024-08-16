@@ -4,6 +4,7 @@ import { LoginFetcher } from "./login";
 import { MedalhaFetcher } from "./medalfetcher";
 import { PaisFetcher } from "./paisfetcher";
 import { RegisterFetcher } from "./Register";
+import {UserFetcher} from "./userFetcher.js";
 
 export class FetcherFactory {
 
@@ -29,5 +30,9 @@ export class FetcherFactory {
 
   createRegisterFetcher() {
     return new RegisterFetcher(this.httpService);
+  }
+
+  createUserFetcher(){
+    return new UserFetcher(this.httpService);
   }
 }
