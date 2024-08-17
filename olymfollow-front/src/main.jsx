@@ -10,6 +10,8 @@ import Register from "./components/Register/Register.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Settings} from "./components/Settings/Settings.jsx";
+import {UserInfo} from "./components/UserInfo/UserInfo.jsx";
+import {DangerZone} from "./components/DangeZone/DangeZone.jsx";
 
 const isAuthenticated = () => sessionStorage.getItem("token") !== null;
 const ProtectedRoute = ({ children }) => (isAuthenticated() ? children : null);

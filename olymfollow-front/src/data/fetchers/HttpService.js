@@ -78,7 +78,7 @@ export class HttpService {
       return response;
     } catch (error) {
       console.error(error);
-      return [];
+      return error;
     }
   }
 }

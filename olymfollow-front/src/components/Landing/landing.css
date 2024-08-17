@@ -13,7 +13,6 @@
   max-height: 100px;
 }
 
-/* From Uiverse.io by Jedi-hongbin */
 button {
   display: flex;
   height: 3em;
@@ -36,9 +35,7 @@ button > svg {
   transition: all 0.4s ease-in;
 }
 
-button:hover {
-  transform: translateY(-5px);
-}
+
 
 .button-login {
   padding: 0.8em 1.8em;

@@ -4,6 +4,9 @@ import "./Settings.css";
 import {NavBar} from "../navbar/NavBar.jsx";
 import {PaisesFavoritados} from "../Paises/PaisesFavoritados.jsx";
 import { FetcherFactory } from '../../data/fetchers/FetcherFactory';
+import {UserInfo} from "../UserInfo/UserInfo.jsx";
+import userImageDefault from "../../assets/user-profile-icon.png"
+import {DangerZone} from "../DangeZone/DangeZone.jsx";
 
 const fecherFactory = new FetcherFactory();
 
@@ -11,6 +14,9 @@ export const Settings = () => {
   const navigate = useNavigate();
 
   const hasToken = sessionStorage.getItem("token");
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [userImage, setUserImage] = useState('');
   const [favoritesCountries, setFavoritesCountries] = useState([]);
 
   useEffect(()=>{
@@ -18,6 +24,11 @@ export const Settings = () => {
           const userFetcher = fecherFactory.createUserFetcher();
           const user = await userFetcher.getCurrentUser();
           console.log(user.inscricoes)
+          setNome(user.username)
+          setEmail(user.email)
+          let userImageUrl = localStorage.getItem("userImage");
+          if(!userImageUrl) userImageUrl = userImageDefault;
+          setUserImage(userImageUrl)
           setFavoritesCountries(user.inscricoes)
       }
       fetchUser();
@@ -35,28 +46,31 @@ export const Settings = () => {
                 marginTop: "7rem",
             }}
         >
-            <h1>Países favoritos</h1>
+            <UserInfo nome={nome} email={email} userImage={userImage}/>
             <PaisesFavoritados countries={favoritesCountries}/>
+            <DangerZone/>
             <Divider/>
         </div>
     </>
   );
 };
 
+
+
 const Divider = () => {
-  return (
-    <>
-      <div className="divider">
-        {Array.from({ length: 22 }).map((_, index) => (
-          <div
-            className="divider-child"
-            key={index}
-            style={{
-              borderLeft: index % 11 === 0 ? "1px solid black" : "none",
-            }}
-          />
-        ))}
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className="divider">
+                {Array.from({length: 33}).map((_, index) => (
+                    <div
+                        className="divider-child"
+                        key={index}
+                        style={{
+                            borderLeft: index % 11 === 0 ? "1px solid black" : "none",
+                        }}
+                    />
+                ))}
+            </div>
+        </>
+    );
 };
