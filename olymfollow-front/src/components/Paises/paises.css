@@ -77,12 +77,6 @@ tr:nth-child(even){background-color: #f2f2f2;}
     }
 }
 
-
-
-.mytooltip:hover {
-    background-color: rgba(255, 0, 0, 0.31);
-}
-
 .mytooltip {
     position: relative;
 }
@@ -115,3 +109,115 @@ tr:nth-child(even){background-color: #f2f2f2;}
 .mytooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+
+.mytooltip:hover svg{
+    animation: jump-shaking 0.83s normal;
+}
+
+@keyframes jump-shaking {
+    0%,
+    100% {
+        transform-origin: top;
+    }
+
+    15% {
+        transform: rotateZ(10deg);
+    }
+
+    30% {
+        transform: rotateZ(-10deg);
+    }
+
+    45% {
+        transform: rotateZ(5deg);
+    }
+
+    60% {
+        transform: rotateZ(-5deg);
+    }
+
+    75% {
+        transform: rotateZ(2deg);
+    }
+}
+
+#dialog-box {
+    max-width: 320px;
+    align-items: flex-start;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0px 87px 78px -39px rgba(0,0,0,0.4);
+}
+
+#dialog-box button{
+    position: absolute;
+    right: 15px;
+}
+
+.icon svg {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.content {
+    margin: 20px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+.title {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+
+.unsubscribe {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    border-radius: 0.5rem;
+    padding: 0.375rem 0.5rem;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgb(255, 255, 255);
+    outline: 2px solid transparent;
+    border: 1px solid rgba(253, 253, 253, 0.363);
+
+}
+
+.unsubscribe {
+    background-color: #038867;
+    font-weight: 500;
+}
+
+.unsubscribe:hover {
+    background-color: #7a2424;
+}
+
+.close {
+    margin: -0.375rem -0.375rem -0.375rem auto;
+    height: 2rem;
+    width: 2rem;
+    display: inline-flex;
+    border-radius: 0.5rem;
+    padding: 0.375rem;
+    background-color: #038867;
+    color: rgba(255, 255, 255, 1);
+    border: none;
+}
+
+.close svg {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.close:hover {
+    background-color: red;
+}
+

@@ -11,30 +11,57 @@ export const CountryRow = (
             numberOfSilvers,
             numberOfBronze,
             numberOfMedal
-        }
+        },
+        setSelectedCountry,
+        selectedCountry
     }
 ) => {
     return (
-        <tr>
-            <td style={{
-                textAlign: "start"
-            }}>
-                <img src={urlImage} alt={nome + "Bandeira"}/>
-                {nome}
-            </td>
-            <td>{numberOfGolds}</td>
-            <td>{numberOfSilvers}</td>
-            <td>{numberOfBronze}</td>
-            <td>{numberOfMedal}</td>
-            <td>
-                <button className="mytooltip">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path
-                            d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/>
+        <>
+            <dialog id="dialog-box">
+                <button type="button" className="close" onClick={() => document.getElementById('dialog-box').close()}>
+                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"></path>
                     </svg>
-                    <span className="tooltiptext">Parar de receber notificações</span>
                 </button>
-            </td>
-        </tr>
+                <div className="content">
+                    <span className="title">Parar de receber notificações do {selectedCountry}?</span>
+                    <br/>
+                    <br/>
+                    <div className="actions">
+                        <div>
+                            <a href="#" className="unsubscribe">Sim</a>
+                        </div>
+                    </div>
+                </div>
+            </dialog>
+            <tr>
+                <td style={{
+                    textAlign: "start"
+                }}>
+                    <img src={urlImage} alt={nome + "Bandeira"}/>
+                    {nome}
+                </td>
+                <td>{numberOfGolds}</td>
+                <td>{numberOfSilvers}</td>
+                <td>{numberOfBronze}</td>
+                <td>{numberOfMedal}</td>
+                <td>
+                    <button className="mytooltip" onClick={() => {
+                        document.getElementById('dialog-box').showModal()
+                        setSelectedCountry(nome)
+                    }}>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 448 512">
+                            <path
+                                d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"/>
+                        </svg>
+                        <span className="tooltiptext">Parar de receber notificações</span>
+                    </button>
+                </td>
+            </tr>
+        </>
     );
 }
