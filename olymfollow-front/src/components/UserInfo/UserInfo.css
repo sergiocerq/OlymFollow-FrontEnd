@@ -1,0 +1,12 @@
+p {
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+
+
+.userRow{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
