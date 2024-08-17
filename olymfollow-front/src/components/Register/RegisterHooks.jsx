@@ -3,15 +3,17 @@ import { FetcherFactory } from "../../data/fetchers/FetcherFactory";
 import { toast } from "sonner";
 import { styleToastError } from "../../styles";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const fetcherFactory = new FetcherFactory();
 
 export const useRegister = () => {
+  const navigator = useNavigate();
   const [register, setRegister] = useState({
-    username: "sergio cabeça",
-    email: "sergiocabeça@gmail.com",
-    password: "senhaadmin",
-    passwordConfirmation: "senhaadmin",
+    username: "",
+    email: "",
+    password: "",
+    passwordConfirmation: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmationPassword, setShowConfirmationPassword] =
@@ -27,13 +29,20 @@ export const useRegister = () => {
       // console.log(user)
 
     }
-    const response = await axios.post("http://10.133.17.1:8080/user/register", {
+    const response = await axios.post("http://localhost:8080/user/register", {
       email: register.email,
       password: register.password,
       username: register.username,
-    })
+    }).catch(reason => {
+      setIsInvalidPassword(true);
+      toast.error(reason.response.data, {
+        style: styleToastError,
+        duration: 3000,
+      });
+    }).then(response => {
+      if(response.status === 201) navigator("/");
+    });
 
-    console.log(response)
   };
 
   const validateCredentials = () => {
