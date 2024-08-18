@@ -17,7 +17,7 @@ import axios from "axios";
 export class HttpService {
   
   constructor() {
-    this.baseURL = "http://localhost:8080/";
+    this.baseURL = "http://localhost:8084/olympics-follow-api/";
     this.headers = {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${sessionStorage.getItem("token")}`,
