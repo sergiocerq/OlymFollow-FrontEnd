@@ -23,10 +23,9 @@ export const Settings = () => {
       const fetchUser = async () => {
           const userFetcher = fecherFactory.createUserFetcher();
           const user = await userFetcher.getCurrentUser();
-          console.log(user.inscricoes)
           setNome(user.username)
           setEmail(user.email)
-          let userImageUrl = localStorage.getItem("userImage");
+          let userImageUrl = user.pictureUrl;
           if(!userImageUrl) userImageUrl = userImageDefault;
           setUserImage(userImageUrl)
           setFavoritesCountries(user.inscricoes)
