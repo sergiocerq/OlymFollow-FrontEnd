@@ -150,3 +150,11 @@
 .svg-icon-input-psswd {
   cursor: pointer;
 }
+
+.signup-link {
+  margin: 10px;
+}
+
+.signup-link a {
+  margin: 10px;
+}

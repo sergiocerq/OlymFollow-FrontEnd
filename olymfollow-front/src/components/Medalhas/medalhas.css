@@ -2,7 +2,6 @@
   width: 90%;
   border-collapse: collapse;
   border-spacing: 0;
-  margin: 2rem;
   font-family: Inknut Antiqua;
 
   > thead {
@@ -51,4 +50,19 @@
 
 .bronze {
   background-color: #cd7f32;
+}
+
+.likeIcon {
+  height: 2em;
+  width: 65px;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  border: 0 solid transparent;
+  background-color: rgba(100,77,237,0.08);
+  border-radius: 1.25em;
+  transition: all 0.2s linear;
+  > svg{
+    width: 25px;
+  }
 }

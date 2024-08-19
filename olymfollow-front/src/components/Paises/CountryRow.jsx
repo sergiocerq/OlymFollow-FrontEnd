@@ -1,4 +1,6 @@
 import React from "react";
+import "./paises.css"
+
 
 
 export const CountryRow = (

@@ -29,12 +29,20 @@ export const useRegister = () => {
       // console.log(user)
 
     }
-    const response = await axios.post("http://localhost:8080/user/register", {
+    const response = await axios.post("http://localhost:8084/olympics-follow-api/user/register", {
       email: register.email,
       password: register.password,
       username: register.username,
     }).catch(reason => {
-      setIsInvalidPassword(true);
+      if(reason.response.status === 400){
+        reason.response.data.foreach((value) => {
+          toast.error(value, {
+            style: styleToastError,
+            duration: 3000,
+          });
+        });
+        return;
+      }
       toast.error(reason.response.data, {
         style: styleToastError,
         duration: 3000,

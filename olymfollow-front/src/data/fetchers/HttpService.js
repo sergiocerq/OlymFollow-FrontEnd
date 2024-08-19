@@ -81,4 +81,17 @@ export class HttpService {
       return error;
     }
   }
+
+  async loginWithGoogle(url, accessToken) {
+    try {
+      const response = await this.client.post(url, {
+        accessToken
+      });
+      console.log(response)
+      return response;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  }
 }

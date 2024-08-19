@@ -13,120 +13,82 @@ export const Landing = () => {
   const hasToken = sessionStorage.getItem("token");
 
   return (
-    <>
-      <NavBar />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: " center",
-          gap: "2rem",
-          marginTop: "7rem",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-          }}
-        >
-          <div>
-            <h1
-              style={{
-                fontWeight: "800",
-                fontFamily: "Inknut Antiqua",
-                fontSize: "4rem",
-              }}
-            >
-              OlympicsFollow
-            </h1>
-            <p
-              style={{
-                fontFamily: "Inknut Antiqua",
-                letterSpacing: "1px",
-                fontSize: "1.4rem",
-              }}
-            >
-              Informação e Conexão nos <span>Jogos Olímpicos</span>
-            </p>
-          </div>
+      <>
+          <NavBar/>
           <div
-            style={{
-              width: "40%",
-            }}
+              style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: " center",
+                  gap: "2rem",
+              }}
           >
-            <Lottie animationData={animationData} />
+              <div
+                  style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-around",
+                  }}
+              >
+                  <div>
+                      <h1
+                          style={{
+                              fontWeight: "800",
+                              fontFamily: "Inknut Antiqua",
+                              fontSize: "4rem",
+                          }}
+                      >
+                          OlympicsFollow
+                      </h1>
+                      <p
+                          style={{
+                              fontFamily: "Inknut Antiqua",
+                              letterSpacing: "1px",
+                              fontSize: "1.4rem",
+                          }}
+                      >
+                          Informação e Conexão nos <span>Jogos Olímpicos</span>
+                      </p>
+                  </div>
+                  <div
+                      style={{
+                          width: "25%",
+                      }}
+                  >
+                      <Lottie animationData={animationData}/>
+                  </div>
+              </div>
+              <div
+                  style={{width: "100%", height: "3px", backgroundColor: "#f1f1f1"}}
+              ></div>
+              <QuadroMedalhas/>
+              <h2>
+                  Siga <span>seus</span> países favoritos
+              </h2>
+              <p>
+                  Selecione e siga os seus países favoritos para receber atualizações
+                  personalizadas e nunca perca uma conquista.
+              </p>
+              <Divider/>
           </div>
-        </div>
-        {!hasToken && (
-          <div
-            style={{
-              display: "flex",
-              gap: "2rem",
-            }}
-          >
-            <button className="button-login" onClick={() => navigate("/login")}>
-              Login
-            </button>
-            <button
-              className="button-login"
-              onClick={() => navigate("/register")}
-              style={{ padding: "0 4rem" }}
-            >
-              Cadastrar
-            </button>
-          </div>
-        )}
-        {/* <Divider />
-        <p>Acompanhe o quadro de medalhas <span>em tempo real</span></p> */}
-        <div
-          style={{ width: "100%", height: "3px", backgroundColor: "#f1f1f1" }}
-        ></div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-around",
-          }}
-        >
-          <em style={{ maxWidth: "30%", fontSize: "1.6rem", margin: "0 5rem" }}>
-            No OlympicsFollow, você tem acesso instantâneo às atualizações do
-            quadro de medalhas das Olimpíadas. Saiba quais países estão no topo
-            e quem está ganhando mais medalhas em tempo real.
-          </em>
-        </div>
-
-        <Divider />
-        <h2>
-          Siga <span>seus</span> países favoritos
-        </h2>
-        <p>
-          Selecione e siga os seus países favoritos para receber atualizações
-          personalizadas e nunca perca uma conquista.
-        </p>
-        <img src="" alt="Foto da tabela com as opções dos países..." />
-        <Divider />
-      </div>
-      <QuadroMedalhas />
-    </>
+      </>
   );
 };
 
 const Divider = () => {
-  return (
-    <>
-      <div className="divider">
-        {Array.from({ length: 22 }).map((_, index) => (
-          <div
-            className="divider-child"
-            key={index}
-            style={{
-              borderLeft: index % 11 === 0 ? "1px solid black" : "none",
-            }}
-          />
-        ))}
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className="divider">
+                {Array.from({length: 22}).map((_, index) => (
+                    <div
+                        className="divider-child"
+                        key={index}
+                        style={{
+                            borderLeft: index % 11 === 0 ? "1px solid black" : "none",
+                        }}
+                    />
+                ))}
+            </div>
+        </>
+    );
 };
