@@ -74,6 +74,25 @@ export const NavBar = () => {
                     </div>
                 )}
               </div>
+                {!hasToken && (
+                    <div
+                        style={{
+                            display: "flex",
+                            gap: "2rem",
+                        }}
+                    >
+                        <button className="button-login" onClick={() => navigate("/login")}>
+                            Login
+                        </button>
+                        <button
+                            className="button-login"
+                            onClick={() => navigate("/register")}
+                            style={{padding: "0 4rem"}}
+                        >
+                            Cadastrar
+                        </button>
+                    </div>
+                )}
             </nav>
           </div>
         </>
