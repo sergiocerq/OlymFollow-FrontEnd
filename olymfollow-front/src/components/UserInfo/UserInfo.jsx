@@ -31,7 +31,8 @@ export const UserInfo = ({nome, email, userImage}) => {
                         <img
                             style={{
                                 width: "75px",
-                                height: "75px"
+                                height: "75px",
+                                borderRadius: "50%"
                             }}
                             src={userImage} alt="User Profile Image"/>
                         <div style={{
