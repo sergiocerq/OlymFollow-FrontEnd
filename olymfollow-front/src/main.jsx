@@ -31,7 +31,9 @@ const router = createBrowserRouter([
   {
     path: "/settings",
     element: (
-        <Settings />
+        <ProtectedRoute>
+          <Settings />
+        </ProtectedRoute>
     ),
     errorElement: <Error />,
   },
