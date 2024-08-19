@@ -29,7 +29,7 @@ export const useRegister = () => {
       // console.log(user)
 
     }
-    const response = await axios.post("http://localhost:8080/user/register", {
+    const response = await axios.post("http://localhost:8084/olympics-follow-api/user/register", {
       email: register.email,
       password: register.password,
       username: register.username,
