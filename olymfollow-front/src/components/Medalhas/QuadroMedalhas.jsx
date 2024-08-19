@@ -28,8 +28,6 @@ export const QuadroMedalhas = () => {
         alignItems: "center",
       }}
     >
-      <h1>ESTOU AQUI NO QUADRO DE MEDALHAS</h1>
-
       <div
         style={{
           display: "flex",
@@ -39,8 +37,8 @@ export const QuadroMedalhas = () => {
           alignItems: "center",
         }}
       >
-        <h1>Quadro de Medalhas!</h1>
-        <table className="quadro-medalhas">
+        <h1>Quadro de Medalhas</h1>
+        <table className="quadro-medalhas" id="quadro-medalhas">
           <thead>
             <tr>
               <th>#</th>
