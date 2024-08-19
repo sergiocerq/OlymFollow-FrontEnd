@@ -2,7 +2,6 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    margin: 2rem;
     font-family: Inknut Antiqua;
 
     > thead {
@@ -47,7 +46,7 @@ td
     text-align: center;
 }
 tr:hover {background-color: #ddd;}
-tr:nth-child(even){background-color: #f2f2f2;}
+
 
 .gold {
     background-color: #ffd700;
@@ -142,7 +141,7 @@ tr:nth-child(even){background-color: #f2f2f2;}
     }
 }
 
-#dialog-box {
+#dialog-box, #dialog-logout {
     max-width: 320px;
     align-items: flex-start;
     border-radius: 0.5rem;
@@ -153,6 +152,10 @@ tr:nth-child(even){background-color: #f2f2f2;}
 #dialog-box button{
     position: absolute;
     right: 15px;
+}
+
+#dialog-logout button{
+    margin: 0 5px;
 }
 
 .icon svg {
@@ -185,20 +188,19 @@ tr:nth-child(even){background-color: #f2f2f2;}
     text-align: center;
     font-size: 0.75rem;
     line-height: 1rem;
-    color: rgb(255, 255, 255);
     outline: 2px solid transparent;
-    border: 1px solid rgba(253, 253, 253, 0.363);
-
-}
-
-.unsubscribe {
-    background-color: #038867;
+    border: 2px solid #038867;
+    color: black;
     font-weight: 500;
+
 }
+
 
 .unsubscribe:hover {
-    background-color: #7a2424;
+    background-color: #038867;
 }
+
+
 
 .close {
     margin: -0.375rem -0.375rem -0.375rem auto;
