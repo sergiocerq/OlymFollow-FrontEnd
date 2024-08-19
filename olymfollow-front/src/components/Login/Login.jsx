@@ -98,7 +98,7 @@ const Login = () => {
               onClick={() => navigate("/register")}
               style={{ color: "#2d9ffc" }}
             >
-              Criar uma conta
+               Criar uma conta
             </a>
           </p>
         </form>
