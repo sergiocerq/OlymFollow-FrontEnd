@@ -34,7 +34,15 @@ export const useRegister = () => {
       password: register.password,
       username: register.username,
     }).catch(reason => {
-      setIsInvalidPassword(true);
+      if(reason.response.status === 400){
+        reason.response.data.foreach((value) => {
+          toast.error(value, {
+            style: styleToastError,
+            duration: 3000,
+          });
+        });
+        return;
+      }
       toast.error(reason.response.data, {
         style: styleToastError,
         duration: 3000,
