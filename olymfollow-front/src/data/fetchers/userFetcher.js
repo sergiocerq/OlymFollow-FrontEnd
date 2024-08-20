@@ -15,6 +15,12 @@ export class UserFetcher extends DataFetcher{
 
     }
 
+    async deleteUserById(){
+        let id = sessionStorage.getItem("userID");
+        return await this.httpService.delete(`/user/${id}`);
+
+    }
+
     async getUserByName(username){
         const data = await this.httpService.get(`/user/${username}`);
         return data.map((user) => new User(user));
