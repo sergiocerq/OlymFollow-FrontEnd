@@ -6,7 +6,8 @@ export class QuadroMedalha {
     numberOfSilvers,
     numberOfBronze,
     numberOfMedal,
-    urlImage
+    urlImage,
+    medalhas
   }) {
     this.id = id;
     this.nome = nome;
@@ -15,5 +16,6 @@ export class QuadroMedalha {
     this.numberOfBronze = numberOfBronze;
     this.numberOfMedal = numberOfMedal;
     this.urlImage = urlImage;
+    this.medalhas = medalhas;
   }
 }

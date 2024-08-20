@@ -76,9 +76,6 @@ tr:hover {background-color: #ddd;}
     }
 }
 
-.mytooltip {
-    position: relative;
-}
 
 .mytooltip .tooltiptext {
     visibility: hidden;

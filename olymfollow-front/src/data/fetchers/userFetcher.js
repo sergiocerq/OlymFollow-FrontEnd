@@ -26,4 +26,15 @@ export class UserFetcher extends DataFetcher{
         return data.map((user) => new User(user));
     }
 
+    async subscribe(countryID){     
+        console.log(countryID)
+        let userID = sessionStorage.getItem("userID");   
+        return await this.httpService.post(`user/subscribe/${userID}/${countryID}`);
+    }
+
+    async unsubscribe(countryID){     
+        let userID = sessionStorage.getItem("userID");   
+        return await this.httpService.delete(`user/unsubscribe/${userID}/${countryID}`);
+    }
+
 }
