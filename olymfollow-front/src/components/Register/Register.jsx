@@ -170,7 +170,7 @@ const Register = () => {
               )}
             </span>
           </div>
-          <button type="button" onClick={handleSubmit}>
+          <button className="button" type="button" onClick={handleSubmit}>
             Cadastrar
           </button>
           <p className="signup-link">

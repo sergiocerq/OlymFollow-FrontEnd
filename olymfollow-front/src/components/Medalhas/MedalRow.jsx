@@ -1,5 +1,6 @@
 import React from "react";
-import "./paises.css"
+import "./medalhas.css"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -18,6 +19,10 @@ export const MedalRow = (
         selectedCountry
     }
 ) => {
+
+    const navigate = useNavigate();
+    const hasToken = sessionStorage.getItem("token");
+
     return (
         <>
             <dialog id="dialog-box">
@@ -29,13 +34,16 @@ export const MedalRow = (
                     </svg>
                 </button>
                 <div className="content">
-                    <span className="title">Parar de receber notificações do {selectedCountry}?</span>
+                    <span className="title">Deseja receber notificações quando {selectedCountry} ganhar medalhas?</span>
                     <br/>
                     <br/>
                     <div className="actions">
-                        <div>
-                            <a href="#" className="unsubscribe">Sim</a>
-                        </div>
+                        {!hasToken && (<div>
+                            <a  onClick={() => navigate("/login")} className="doLogin">Fazer login</a>
+                        </div>)}
+                        {hasToken && (<div>
+                            <a onClick={() => {}} className="unsubscribe">Sim</a>
+                        </div>)}
                     </div>
                 </div>
             </dialog>
@@ -43,7 +51,7 @@ export const MedalRow = (
                 <td style={{
                     textAlign: "start"
                 }}>
-                    <img src={urlImage} alt={nome + "Bandeira"}/>
+                    <img src={urlImage} alt={nome + " Bandeira"}/>
                     {nome}
                 </td>
                 <td>{numberOfGolds}</td>
