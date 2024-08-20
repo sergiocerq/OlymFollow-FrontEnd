@@ -27,6 +27,7 @@ export const NavBar = () => {
                      className="unsubscribe">Não</button>
                   <button onClick={()=>{
                     sessionStorage.removeItem("token");
+                    document.getElementById('dialog-logout').close()
                     navigate("/")
                   }} className="unsubscribe">Sim</button>
                 </div>
