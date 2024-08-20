@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./medalhas.css";
 import { FetcherFactory } from "../../data/fetchers/FetcherFactory.js";
 import "./medalhas.css"
+import {CountryRow} from "../Paises/CountryRow.jsx";
+import {MedalRow} from "./MedalRow.jsx";
 
 const fetcherFactory = new FetcherFactory();
 
 export const QuadroMedalhas = () => {
-  const [quadroMedalhas, setQuadroMedalhas] = useState();
+  const [quadroMedalhas, setQuadroMedalhas] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState('');
+
 
   useEffect(() => {
     const fetchMedalhas = async () => {
@@ -55,6 +59,11 @@ export const QuadroMedalhas = () => {
           </tr>
           </thead>
           <tbody>
+          {
+            quadroMedalhas.map(country => <MedalRow key={country.id} country={country}
+                                                 setSelectedCountry={setSelectedCountry}
+                                                 selectedCountry={selectedCountry}/>)
+          }
           <tr>
             <td style={{
               textAlign: "start"
