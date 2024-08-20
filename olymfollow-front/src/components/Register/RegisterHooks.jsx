@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { styleToastError } from "../../styles";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {handleToken} from "../../utils.js";
 
 const fetcherFactory = new FetcherFactory();
 
@@ -22,14 +23,10 @@ export const useRegister = () => {
 
   const handleSubmit = async () => {
     validateCredentials();
-    if(!isInvalidPassword) {
-      // const loginFetcher = fetcherFactory.createRegisterFetcher();
-      // const user = await loginFetcher.register(register);
 
-      // console.log(user)
+    if(isInvalidPassword) return;
 
-    }
-    const response = await axios.post("http://localhost:8084/olympics-follow-api/user/register", {
+    await axios.post("http://localhost:8084/olympics-follow-api/user/register", {
       email: register.email,
       password: register.password,
       username: register.username,
@@ -48,9 +45,15 @@ export const useRegister = () => {
         duration: 3000,
       });
     }).then(response => {
-      if(response.status === 201) navigator("/");
+      if(response.status === 201) {
+        console.log(response)
+        let token = handleToken(response.headers['authorization']);
+        let userID = response.headers['userid'];
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("userID", userID);
+        navigator("/");
+      }
     });
-
   };
 
   const validateCredentials = () => {
