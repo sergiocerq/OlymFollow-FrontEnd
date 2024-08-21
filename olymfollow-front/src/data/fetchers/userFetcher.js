@@ -5,13 +5,13 @@ export class UserFetcher extends DataFetcher{
 
     async getCurrentUser(){
         let id = sessionStorage.getItem("userID");
-        return await this.httpService.get(`/user?id=${id}`);
-
+        let response =  await this.httpService.get(`/user?id=${id}`);
+        return response.data;
     }
 
     async getUserById(id){
-        const data = await this.httpService.get(`/user?id=${id}`);
-        return data.map((user) => new User(user));
+        const response = await this.httpService.get(`/user?id=${id}`);
+        return response.data.map((user) => new User(user));
 
     }
 
@@ -24,6 +24,17 @@ export class UserFetcher extends DataFetcher{
     async getUserByName(username){
         const data = await this.httpService.get(`/user/${username}`);
         return data.map((user) => new User(user));
+    }
+
+    async subscribe(countryID){     
+        console.log(countryID)
+        let userID = sessionStorage.getItem("userID");   
+        return await this.httpService.post(`user/subscribe/${userID}/${countryID}`);
+    }
+
+    async unsubscribe(countryID){     
+        let userID = sessionStorage.getItem("userID");   
+        return await this.httpService.delete(`user/unsubscribe/${userID}/${countryID}`);
     }
 
 }

@@ -43,4 +43,16 @@
       }
     }
   }
+  svg {
+    fill: #acacac;
+    height: 2rem;
+
+    transition: 0.5s;
+  }
+}
+
+button{
+  > svg {
+    width: 50px;
+  }
 }

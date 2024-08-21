@@ -82,7 +82,7 @@
       border: 3px solid #3e9eff;
     }
 
-    > button {
+    > .button {
       width: 90%;
       padding: 0.5rem;
       border-radius: 5px;
@@ -157,4 +157,25 @@
 
 .signup-link a {
   margin: 10px;
+}
+
+svg {
+  fill: #acacac;
+  height: 2rem;
+
+  transition: 0.5s;
+}
+
+.buttonBack {
+  display: flex;
+  height: 3em;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: #fff;
 }
