@@ -31,7 +31,7 @@ export class HttpService {
   async get(url) {
     try {
       const response = await this.client.get(url);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(error);
       return [];
@@ -40,8 +40,7 @@ export class HttpService {
 
   async post(url, data) {
     try {
-      const response = await this.client.post(url, data);
-      return response.data;
+      return await this.client.post(url, data);
     } catch (error) {
       console.error(error);
       return [];

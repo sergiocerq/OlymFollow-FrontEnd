@@ -5,13 +5,13 @@ export class UserFetcher extends DataFetcher{
 
     async getCurrentUser(){
         let id = sessionStorage.getItem("userID");
-        return await this.httpService.get(`/user?id=${id}`);
-
+        let response =  await this.httpService.get(`/user?id=${id}`);
+        return response.data;
     }
 
     async getUserById(id){
-        const data = await this.httpService.get(`/user?id=${id}`);
-        return data.map((user) => new User(user));
+        const response = await this.httpService.get(`/user?id=${id}`);
+        return response.data.map((user) => new User(user));
 
     }
 

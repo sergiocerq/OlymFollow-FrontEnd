@@ -13,8 +13,8 @@ import { DataFetcher } from "./DataFetcher";
 
 export class MedalhaFetcher extends DataFetcher {
   async getMedals() {
-    const data = await this.httpService.get("/OlymFollow/medalhas");
-    return data.map((medal) => new QuadroMedalha(medal));
+    const response = await this.httpService.get("/OlymFollow/medalhas");
+    return response.data.map((medal) => new QuadroMedalha(medal));
   }
 
   async getMedalsByCountry(country) {

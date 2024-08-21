@@ -21,7 +21,6 @@ export const QuadroMedalhas = () => {
     fetchMedalhas();
   }, []);
 
-  // console.log(quadroMedalhas)
 
   return (
    <>
