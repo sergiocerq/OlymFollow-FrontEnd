@@ -11,7 +11,7 @@ import {useMedalha} from "../Medalhas/MedalhasHook.jsx";
 export const NavBar = (isAdmin) => {
   const hasToken = sessionStorage.getItem("token");
   const navigate = useNavigate();
-  const { setTipoMedalhaID , setNomeAtleta, setcountryID, setEsporte, handleSubmit} = useMedalha();
+  const { medalha, setMedalha, handleSubmit} = useMedalha();
 
     return (
         <>
@@ -46,7 +46,9 @@ export const NavBar = (isAdmin) => {
                 <button type="button" className="close" onClick={() => {
                     document.getElementById('dialog-medal').close()
                 }}>
-                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg style={{
+                        margin: "5px;"
+                    }} aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd"
                               d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                               clipRule="evenodd"></path>
@@ -54,12 +56,16 @@ export const NavBar = (isAdmin) => {
                 </button>
                 <div className="content">
                     <h3>Cadastrar Nova Medalha</h3>
-                    <SelectTipoMedalha/>
+                    <SelectTipoMedalha medalha={medalha} setMedalha={setMedalha}/>
 
-                    <input type="text" name="" id="" placeholder={"Digite o nome do atleta"}/>
+                    <input type="text" name="" id="" placeholder={"Digite o nome do atleta"} onChange={(e) =>{
+                        setMedalha({...medalha, nomeAtleta: e.target.value})
+                    }}/>
 
-                    <SelectPaises/>
-                    <input type="text" name="" id="" placeholder={"Digite o esporte"}/>
+                    <SelectPaises medalha={medalha} setMedalha={setMedalha}/>
+                    <input type="text" name="" id="" placeholder={"Digite o esporte"} onChange={(e) =>{
+                        setMedalha({...medalha, esporte: e.target.value})
+                    }}/>
                     <div className="actions">
                         <a onClick={() => handleSubmit()} className="unsubscribe">Cadastrar</a>
                     </div>

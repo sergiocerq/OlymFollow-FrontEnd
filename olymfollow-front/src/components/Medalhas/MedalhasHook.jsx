@@ -6,16 +6,13 @@ import {styleToastError} from "../../styles.js";
 const fetcherFactory = new FetcherFactory();
 
 export const useMedalha = () => {
-    const [tipoMedalhaID, setTipoMedalhaID] = useState(0);
-    const [nomeAtleta, setNomeAtleta] = useState("");
-    const [countryID, setcountryID] = useState(0);
-    const [esporte, setEsporte] = useState("");
+    const [medalha, setMedalha] = useState({tipoMedalhaID : 0, nomeAtleta: '', countryID: 0, esporte: ''})
     const [isValidCredentials, setIsValidCredentials] = useState(true);
 
 
     const validateCredentials = () => {
-
-        if(tipoMedalhaID === ""){
+        console.log(medalha);
+        if(medalha.tipoMedalhaID === ""){
             toast.error("Selecione o tipo de medalha.", {
                 style: styleToastError,
                 duration: 3000,
@@ -23,7 +20,7 @@ export const useMedalha = () => {
             setIsValidCredentials(false);
         }
 
-        if(nomeAtleta === ""){
+        if(medalha.nomeAtleta === ""){
             toast.error("Digite o nome do atleta da medalha.", {
                 style: styleToastError,
                 duration: 3000,
@@ -31,7 +28,7 @@ export const useMedalha = () => {
             setIsValidCredentials(false);
         }
 
-        if(countryID === ""){
+        if(medalha.countryID === ""){
             toast.error("Selecione o país.", {
                 style: styleToastError,
                 duration: 3000,
@@ -39,7 +36,7 @@ export const useMedalha = () => {
             setIsValidCredentials(false);
         }
 
-        if(esporte === ""){
+        if(medalha.esporte === ""){
             toast.error("Selecione o esporte.", {
                 style: styleToastError,
                 duration: 3000,
@@ -53,5 +50,5 @@ export const useMedalha = () => {
     const handleSubmit = async () => {
         validateCredentials();
     }
-    return { setTipoMedalhaID , setNomeAtleta, setcountryID, setEsporte, handleSubmit};
+    return { medalha, setMedalha, handleSubmit};
 }
