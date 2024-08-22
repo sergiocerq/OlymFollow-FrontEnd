@@ -16,7 +16,8 @@ export const Settings = () => {
   const hasToken = sessionStorage.getItem("token");
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
-  const [userImage, setUserImage] = useState('');
+    const [userImage, setUserImage] = useState('');
+    const [isAdmin, setIsAdmin] = useState('');
   const [favoritesCountries, setFavoritesCountries] = useState([]);
 
   useEffect(()=>{
@@ -25,6 +26,7 @@ export const Settings = () => {
           const user = await userFetcher.getCurrentUser();
           setNome(user.username)
           setEmail(user.email)
+          setIsAdmin(user.isAdmin)
           let userImageUrl = user.pictureUrl;
           if(!userImageUrl) userImageUrl = userImageDefault;
           setUserImage(userImageUrl)
@@ -35,7 +37,7 @@ export const Settings = () => {
 
   return (
     <>
-      {hasToken && <NavBar />}
+      {hasToken && <NavBar isAdmin={isAdmin}/>}
         <div
             style={{
                 display: "flex",

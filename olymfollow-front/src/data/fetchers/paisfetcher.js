@@ -1,4 +1,5 @@
 import { DataFetcher } from "./DataFetcher";
+import {Pais} from "../classes/pais.js";
 
 /**
  * 
@@ -8,7 +9,7 @@ import { DataFetcher } from "./DataFetcher";
  */
 export class PaisFetcher extends DataFetcher {
   async getPaises() {
-    const data = await this.httpService.get("/Olymfollow/paises");
-    return data.map((pais) => new Pais(pais));
+    const response = await this.httpService.get("/countries");
+    return response.data.map((pais) => new Pais(pais));
   }
 }

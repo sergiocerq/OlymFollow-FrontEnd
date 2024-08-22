@@ -34,7 +34,7 @@ export class HttpService {
       return response;
     } catch (error) {
       console.error(error);
-      return [];
+      return error;
     }
   }
 
@@ -43,7 +43,7 @@ export class HttpService {
       return await this.client.post(url, data);
     } catch (error) {
       console.error(error);
-      return [];
+      return error;
     }
   }
 
@@ -86,7 +86,6 @@ export class HttpService {
       const response = await this.client.post(url, {
         accessToken
       });
-      console.log(response)
       return response;
     } catch (error) {
       console.error(error);

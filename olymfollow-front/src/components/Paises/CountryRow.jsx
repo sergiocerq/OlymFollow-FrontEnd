@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./paises.css"
+import {toast} from "sonner";
+import {styleToastError, styleToastSucess} from "../../styles.js";
+import {FetcherFactory} from "../../data/fetchers/FetcherFactory.js";
 
 
+const fetcherFactory = new FetcherFactory();
 
 export const CountryRow = (
     {
@@ -15,13 +19,51 @@ export const CountryRow = (
             numberOfMedal
         },
         setSelectedCountry,
-        selectedCountry
+        selectedCountry,
+        removeRow
     }
 ) => {
+
+    const [selectedCountryID, setSelectedCountryID] = useState(id);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    useEffect(() => {
+        if (isDialogOpen) {
+            console.log("Dialog opened with ID:", selectedCountryID);
+        }
+    }, [isDialogOpen, selectedCountryID]);
+
+    const openDialog = () => {
+        setIsDialogOpen(true);
+        setSelectedCountry(nome)
+        setSelectedCountryID(id);
+    };
+
+    const closeDialog = () => {
+        setIsDialogOpen(false);
+    };
+
+    const unsubscribe = async () => {
+        const userFetcher = fetcherFactory.createUserFetcher();
+        let response = await userFetcher.unsubscribe(selectedCountryID);
+        closeDialog()
+        removeRow(selectedCountryID)
+        if (response.status === 200){
+            toast.error("Não possível seguir o país", {
+                style: styleToastError,
+                duration: 3000,
+            });
+            return;
+        }
+    };
+
     return (
         <>
-            <dialog id="dialog-box">
-                <button type="button" className="close" onClick={() => document.getElementById('dialog-box').close()}>
+            {isDialogOpen &&(<dialog open style={{
+                top: "50%",
+                left: "25%"
+            }}>
+                <button type="button" className="close" onClick={() => closeDialog()}>
                     <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd"
                               d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -33,12 +75,10 @@ export const CountryRow = (
                     <br/>
                     <br/>
                     <div className="actions">
-                        <div>
-                            <a href="#" className="unsubscribe">Sim</a>
-                        </div>
+                            <a onClick={() => unsubscribe()} className="unsubscribe">Sim</a>
                     </div>
                 </div>
-            </dialog>
+            </dialog>)}
             <tr>
                 <td style={{
                     textAlign: "start"
@@ -51,10 +91,7 @@ export const CountryRow = (
                 <td>{numberOfBronze}</td>
                 <td>{numberOfMedal}</td>
                 <td>
-                    <button className="mytooltip" onClick={() => {
-                        document.getElementById('dialog-box').showModal()
-                        setSelectedCountry(nome)
-                    }}>
+                    <button className="mytooltip" onClick={openDialog}>
                         <svg xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 448 512">
                             <path
