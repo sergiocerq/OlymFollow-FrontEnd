@@ -6,7 +6,7 @@ import {styleToastError} from "../../styles.js";
 const fetcherFactory = new FetcherFactory();
 
 export const useMedalha = () => {
-    const [medalha, setMedalha] = useState({tipoMedalhaID : 0, nomeAtleta: '', countryID: 0, esporte: ''})
+    const [medalha, setMedalha] = useState({tipoMedalhaID : '', nomeAtleta: '', countryID: '', esporte: ''})
     const [isValidCredentials, setIsValidCredentials] = useState(true);
 
 

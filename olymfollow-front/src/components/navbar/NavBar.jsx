@@ -9,9 +9,17 @@ import {SelectEsportes} from "../Esportes/SelectEsportes.jsx";
 import {useMedalha} from "../Medalhas/MedalhasHook.jsx";
 
 export const NavBar = (isAdmin) => {
-  const hasToken = sessionStorage.getItem("token");
-  const navigate = useNavigate();
-  const { medalha, setMedalha, handleSubmit} = useMedalha();
+    const hasToken = sessionStorage.getItem("token");
+    const navigate = useNavigate();
+    const { medalha, setMedalha, handleSubmit} = useMedalha();
+    
+    const setTipoMedalhaID = (tipoMedalhaID) => {
+        setMedalha({...medalha, tipoMedalhaID: tipoMedalhaID})
+    }
+
+    const setCountryID = (countryID) => {
+        setMedalha({...medalha, countryID: countryID})
+    }
 
     return (
         <>
@@ -56,13 +64,13 @@ export const NavBar = (isAdmin) => {
                 </button>
                 <div className="content">
                     <h3>Cadastrar Nova Medalha</h3>
-                    <SelectTipoMedalha medalha={medalha} setMedalha={setMedalha}/>
+                    <SelectTipoMedalha setTipoMedalhaID={setTipoMedalhaID}/>
 
                     <input type="text" name="" id="" placeholder={"Digite o nome do atleta"} onChange={(e) =>{
                         setMedalha({...medalha, nomeAtleta: e.target.value})
                     }}/>
 
-                    <SelectPaises medalha={medalha} setMedalha={setMedalha}/>
+                    <SelectPaises setCountryID={setCountryID}/>
                     <input type="text" name="" id="" placeholder={"Digite o esporte"} onChange={(e) =>{
                         setMedalha({...medalha, esporte: e.target.value})
                     }}/>

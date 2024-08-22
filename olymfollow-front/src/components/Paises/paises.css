@@ -248,10 +248,10 @@ select, input {
     margin:  10px;
 }
 
-input:focus, select:focus {
+select:focus {
     outline: none;
     border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 5px #007bff80;
 }
 
 .dialog-medal input{

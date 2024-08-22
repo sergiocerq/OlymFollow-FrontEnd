@@ -4,10 +4,14 @@ import {FetcherFactory} from "../../data/fetchers/FetcherFactory.js";
 const fetcherFactory = new FetcherFactory();
 
 
-export const SelectPaises = () => {
+export const SelectPaises = ({setCountryID}) => {
 
     const [options, setOptions] = useState([]);
 
+    const handleChange = (e) =>{
+        console.log(e.target.value);
+        setCountryID(e.target.value);
+    }
 
     useEffect(() => {
         const fetchPaises =  async () =>{
@@ -20,7 +24,7 @@ export const SelectPaises = () => {
     },[])
 
     return (
-        <select>
+        <select onChange={handleChange}>
             <option>Selecione o país</option>
             {
                 options.map(value => <option value={value.id}>{value.nome}</option>)
