@@ -1,84 +1,58 @@
-import React, { useEffect, useState } from "react";
-import "./medalhas.css";
-import { FetcherFactory } from "../../data/fetchers/FetcherFactory.js";
-import "./medalhas.css"
-import {MedalRow} from "./MedalRow.jsx";
-import { Toaster } from "sonner";
+import React, { useState } from "react";
 
-const fetcherFactory = new FetcherFactory();
+export const TableRow  = ({data}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
 
-export const QuadroMedalhas = () => {
-  const [quadroMedalhas, setQuadroMedalhas] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState('');
-
-  useEffect(() => {
-    const fetchMedalhas = async () => {
-      const medalhaFetcher = fetcherFactory.createMedalhaFetcher();
-      const medalhas = await medalhaFetcher.getMedals();
-      medalhas.sort((a, b) => a.nome.localeCompare(b.nome));
-      setQuadroMedalhas(medalhas);
-    };
-    fetchMedalhas();
-  }, []);
-
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
-   <>
-    
-    <Toaster position="top-right"/>
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "3rem",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <h1>Quadro de Medalhas</h1>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "3rem",
-          alignItems: "center",
-          maxHeight: "73vh",
-          overflow: "auto"
-        }}
-      >
-        <table className="quadro-medalhas">
-          <thead style={{
-            top: 0,
-            position: "sticky "
-          }}>
-          <tr style={{
-            backgroundColor: "white",
-            zIndex: 9999
-          }}>
-            <th>País</th>
-            <th>
-              Ouro <div className="gold"></div>
-            </th>
-            <th>
-              Prata <div className="silver"></div>
-            </th>
-            <th>
-              Bronze <div className="bronze"></div>
-            </th>
-            <th>Total</th>
-            <th>Ações</th>
-          </tr>
-          </thead>
-          <tbody>
-          {
-            quadroMedalhas.map(country => <MedalRow key={country.id} country={country}
-                                                 setSelectedCountry={setSelectedCountry}
-                                                 selectedCountry={selectedCountry}/>)
-          }          
-          </tbody>
-        </table>
-      </div>
-    </div>
-    </>
+      <>
+        <tr onClick={toggleExpand} style={{ cursor: "pointer" }}>
+          <td>data.nome</td>
+          <td>{isExpanded ? "↑" : "↓"}</td>
+        </tr>
+        {isExpanded && (
+            <tr>
+              <td colSpan="2">
+                <table>
+                  <tbody>
+                  <tr>
+                    <td>Detalhe 1:</td>
+                  </tr>
+                  <tr>
+                    <td>Detalhe 2:</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+        )}
+      </>
+  );
+};
+
+export const QuadroMedalhas = () => {
+  const tableData = [
+    {id: 1,  nome: "Item 1", ulrImage: "Detalhe 1.1", numberOfGolds: "Detalhe 1.2" , numberOfSilvers: "Detalhe 1.2" , numberOfMedal: "Detalhe 1.2" },
+    {id: 2,  nome: "Item 2", ulrImage: "Detalhe 2.1", numberOfGolds: "Detalhe 2.2" , numberOfSilvers: "Detalhe 2.2" , numberOfMedal: "Detalhe 2.2" },
+    // Adicione mais itens aqui
+  ];
+
+  return (
+      <table border="1">
+        <thead>
+        <tr>
+          <th>Item</th>
+          <th>Expandir</th>
+        </tr>
+        </thead>
+        <tbody>
+        {tableData.map((data, index) => (
+            <TableRow key={index} country={data} />
+        ))}
+        </tbody>
+      </table>
   );
 };
