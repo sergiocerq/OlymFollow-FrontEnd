@@ -5,6 +5,7 @@
  * @constant styleToastWarning Estilo do toast de aviso
  * @constant styleToastError Estilo do toast de erro
  * @constant styleToastInfo Estilo do toast de informação
+ * @constant styleToastDefault Estilo padrão do toast
  */
 
 export const styleToastSucess = {	

@@ -6,8 +6,29 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {handleToken} from "../../utils.js";
 
-const fetcherFactory = new FetcherFactory();
 
+/**
+ * Hook customizado useRegister para gerenciar a lógica de registro de novos usuários.
+ *
+ * @description Este hook fornece a lógica necessária para validar os dados de registro, comunicar-se com a API de registro,
+ * e gerenciar o estado de carregamento, erro e sucesso durante o processo de registro.
+ *
+ * @returns {Object} - Retorna um objeto contendo as funções e estados necessários para o registro.
+ * @returns {Function} register - Função para iniciar o processo de registro com os dados fornecidos.
+ * @returns {boolean} isLoading - Estado que indica se o processo de registro está em andamento.
+ * @returns {string} error - Mensagem de erro, se houver, durante o processo de registro.
+ * @returns {boolean} success - Estado que indica se o registro foi bem-sucedido.
+ *
+ * @example
+ * const { register, isLoading, error, success } = useRegister();
+ *
+ * // Chamar a função de registro com os dados do formulário
+ * register({ username: "user", email: "user@example.com", password: "password", confirmPassword: "password" });
+ * 
+ * @see {@link http://localhost:5173/register} para ver a página de registro que utiliza
+ * 
+ * @returns {Object} O objeto contendo as funções e estados necessários para o registro.
+ */
 export const useRegister = () => {
   const navigator = useNavigate();
   const [register, setRegister] = useState({
@@ -21,6 +42,14 @@ export const useRegister = () => {
     useState(false);
   const [isInvalidPassword, setIsInvalidPassword] = useState(false);
 
+  /**
+   * 
+   * @description Função handleSubmit para enviar os dados de registro para a API.
+   * 
+   * @param {Function} setIsLoading - Função para atualizar o estado de carregamento.
+   * 
+   * @returns {Promise<void>}
+   */
   const handleSubmit = async (setIsLoading) => {
     validateCredentials();
 
@@ -55,6 +84,12 @@ export const useRegister = () => {
     });
   };
 
+  /**
+   * 
+   * @description Função validateCredentials para validar os dados de registro.
+   * 
+   * @returns {void}
+   */
   const validateCredentials = () => {
     if (register.username === "" || !register.username) {
       setIsInvalidPassword(true);

@@ -3,7 +3,16 @@ import {FetcherFactory} from "../../data/fetchers/FetcherFactory.js";
 
 const fetcherFactory = new FetcherFactory();
 
-
+/**
+ * @description Componente SelectTipoMedalha para selecionar o tipo de medalha.
+ *
+ * @example
+ * <SelectTipoMedalha value={tipoMedalha} onChange={handleTipoMedalhaChange} />
+ * 
+ * @param {Object} props - Function que atualiza o tipo de medalha.
+ * 
+ * @returns {JSX.Element} O JSX do componente SelectTipoMedalha.
+ */
 export const SelectTipoMedalha = ({setTipoMedalha}) => {
 
 

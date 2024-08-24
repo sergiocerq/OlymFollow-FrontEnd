@@ -7,6 +7,18 @@ import {handleToken} from "../../utils.js";
 
 const fetcherFactory = new FetcherFactory();
 
+/**
+ * Custom Hook - useLogin.
+ * 
+ * @description Hook customizado que retorna o estado e funções relacionadas ao login.
+ * 
+ * @property {Object} login Objeto contendo os campos email e password.
+ * 
+ * @example
+ * const { login, setLogin, showPassword, setShowPassword, handleSubmit } = useLogin();
+ * 
+ * @returns {Object} Objeto contendo o estado e funções relacionadas ao login.
+ */
 export const useLogin = () => {
   const [login, setLogin] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);

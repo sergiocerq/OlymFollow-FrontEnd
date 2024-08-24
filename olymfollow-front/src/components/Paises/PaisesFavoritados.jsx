@@ -2,7 +2,18 @@ import React, {useEffect, useState} from "react";
 import {CountryRow} from "./CountryRow.jsx";
 import "./paises.css"
 
-
+/**
+ * Componente PaisesFavoritados para exibir e gerenciar a lista de países favoritados.
+ *
+ * @description Este componente é responsável por renderizar uma lista de países que foram marcados como favoritos pelo usuário.
+ * Ele busca os dados dos países favoritados, permite que o usuário remova um país dos favoritos e atualiza a lista
+ * conforme necessário.
+ *
+ * @example
+ * <PaisesFavoritados />
+ * 
+ * @returns {JSX.Element} O JSX do componente PaisesFavoritados.
+ */
 export const PaisesFavoritados = ({countries}) =>{
     const [selectedCountry, setSelectedCountry] = useState('');
     const [countriesList, setCountriesList] = useState(countries);

@@ -5,6 +5,14 @@ import { FetcherFactory } from '../../data/fetchers/FetcherFactory';
 
 const fecherFactory = new FetcherFactory();
 
+/**
+ * @description Componente ListaPaises para exibir e gerenciar a lista de países.
+ *
+ * @example
+ * <ListaPaises />
+ * 
+ * @returns {JSX.Element} O JSX do componente ListaPaises.
+ */
 export const ListaPaises = () => {
   const [paises, setPaises] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
