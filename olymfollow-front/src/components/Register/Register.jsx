@@ -8,6 +8,18 @@ import Lottie from "lottie-react";
 import React, {useState} from "react";
 import {Loader} from "../loader/Loader.jsx";
 
+/**
+ * Componente Register para gerenciar o registro de novos usuários.
+ *
+ * @description Este componente utiliza o hook `useRegister` para lidar com a lógica de registro, incluindo a validação de dados
+ * e a comunicação com a API de registro. Ele renderiza um formulário de registro e exibe mensagens de erro ou sucesso
+ * conforme necessário.
+ *
+ * @example
+ * <Register />
+ * 
+ * @returns {JSX.Element} O JSX do componente Register.
+ */
 const Register = () => {
   const {
     register,

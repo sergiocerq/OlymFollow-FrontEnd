@@ -3,7 +3,16 @@ import {FetcherFactory} from "../../data/fetchers/FetcherFactory.js";
 
 const fetcherFactory = new FetcherFactory();
 
-
+/**
+ * @description Componente SelectPaises para selecionar um país a partir de uma lista.
+ *
+ * @param {Function} props.onChange - Função chamada ao alterar o país selecionado.
+ *
+ * @example
+ * <SelectPaises onChange={handleCountryChange} />
+ * 
+ * @returns {JSX.Element} O JSX do componente SelectPaises.
+ */
 export const SelectPaises = ({setCountryID}) => {
 
     const [options, setOptions] = useState([]);

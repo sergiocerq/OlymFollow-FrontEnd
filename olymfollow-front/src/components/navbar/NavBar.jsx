@@ -7,6 +7,16 @@ import {useMedalha} from "../Medalhas/MedalhasHook.jsx";
 import {useState} from "react";
 import {Loader} from "../loader/Loader.jsx";
 
+/**
+ * @description Componente NavBar para exibir a barra de navegação do olympicsfollow.
+ *
+ * @param {Object} props  Propriedades que definem se um usuário é admin ou não.
+ *
+ * @example
+ * <NavBar />
+ * 
+ * @returns {JSX.Element} O JSX do componente NavBar.
+ */
 export const NavBar = ({isAdmin}) => {
     const hasToken = sessionStorage.getItem("token");
     const navigate = useNavigate();

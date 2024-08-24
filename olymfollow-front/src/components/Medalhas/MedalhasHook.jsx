@@ -5,6 +5,20 @@ import {styleToastError, styleToastSucess} from "../../styles.js";
 
 const fetcherFactory = new FetcherFactory();
 
+/**
+ * Custom hook para gerenciar dados de medalhas e lidar com o envio de formulários.
+ *
+ * @returns {Object} - Retorna um objeto contendo o estado da medalha, a função setMedalha e a função handleSubmit.
+ *
+ * @example
+ * const { medalha, setMedalha, handleSubmit } = useMedalha();
+ *
+ * // Atualizar o estado de medalha
+ * setMedalha({ tipoMedalha: 'Ouro', nomeAtleta: 'João Silva', countryID: 54, esporte: 'Natação' });
+ *
+ * // Lidar com o envio do formulário
+ * handleSubmit(setIsLoading);
+ */
 export const useMedalha = () => {
     const [medalha, setMedalha] = useState({tipoMedalha : '', nomeAtleta: '', countryID: '', esporte: ''})
     const [isValidCredentials, setIsValidCredentials] = useState(true);

@@ -8,6 +8,27 @@ import {styleToastError, styleToastSucess} from "../../styles.js";
 
 const fetcherFactory = new FetcherFactory();
 
+/**
+ * @description Componente MedalRow para exibir e gerenciar uma linha de dados de medalha.
+ *
+ * @param {Object} props - As propriedades passadas para o componente.
+ * @param {Object} props.medalha - O objeto que representa os dados da medalha.
+ * @param {string} props.medalha.tipoMedalha - O tipo da medalha.
+ * @param {string} props.medalha.nomeAtleta - O nome do atleta.
+ * @param {string} props.medalha.countryID - O ID do país.
+ * @param {string} props.medalha.esporte - O esporte.
+ * @param {Function} props.onEdit - Função chamada ao editar a medalha.
+ * @param {Function} props.onDelete - Função chamada ao deletar a medalha.
+ *
+ * @example
+ * <MedalRow 
+ *   medalha={{ tipoMedalha: 'Ouro', nomeAtleta: 'João Silva', countryID: 'BRA', esporte: 'Natação' }} 
+ *   onEdit={handleEdit} 
+ *   onDelete={handleDelete} 
+ * />
+ * 
+ * @returns {JSX.Element} O JSX do componente MedalRow.
+ */
 export const MedalRow = (
     {
         key,

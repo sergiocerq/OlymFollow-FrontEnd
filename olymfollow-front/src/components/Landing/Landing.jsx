@@ -7,11 +7,12 @@ import OlympicRings from "../../assets/Olympic_rings.svg";
 import "./landing.css";
 import { NavBar } from "../navbar/NavBar";
 
+/**
+ * 
+ * @description Componente que renderiza a landing page do OlympicsFollow, contendo informações sobre o site e o quadro de medalhas.
+ * @name Landing 
+ */
 export const Landing = () => {
-  const navigate = useNavigate();
-
-  const hasToken = sessionStorage.getItem("token");
-
   return (
       <>
           <NavBar/>
@@ -75,6 +76,10 @@ export const Landing = () => {
   );
 };
 
+/**
+ * 
+ * @returns Componente que renderiza um divisor estilizado para a landing page.
+ */
 const Divider = () => {
     return (
         <>

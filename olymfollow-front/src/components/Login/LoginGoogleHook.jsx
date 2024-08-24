@@ -8,6 +8,15 @@ import {handleToken} from "../../utils.js";
 
 const fetcherFactory = new FetcherFactory();
 
+/**
+ * Hook customizado que retorna a função de login com o Google.
+ * 
+ * 
+ * @ example
+ * const {loginGoogle} = useLoginGoogle();
+ * 
+ * @returns {Object} Objeto contendo a função de login com o Google.
+ */
 export const useLoginGoogle = () => {
     const navigate = useNavigate();
 
