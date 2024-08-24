@@ -5,15 +5,27 @@ import loadingAnimation from "../../assets/LoadingAnimation.json";
 
 export const Loader = () => {
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Lottie animationData={loadingAnimation} />
-    </div>
+    <>
+        <div>
+            <div className="loader">
+                <div className="dot"></div>
+            </div>
+            <div className="loader">
+                <div className="dot"></div>
+            </div>
+            <div className="loader">
+                <div className="dot"></div>
+            </div>
+            <div className="loader">
+                <div className="dot"></div>
+            </div>
+            <div className="loader">
+                <div className="dot"></div>
+            </div>
+            <div className="loader">
+                <div className="dot"></div>
+            </div>
+        </div>
+    </>
   );
 };

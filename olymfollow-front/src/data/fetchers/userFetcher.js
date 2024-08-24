@@ -6,7 +6,7 @@ export class UserFetcher extends DataFetcher{
     async getCurrentUser(){
         let id = sessionStorage.getItem("userID");
         let response =  await this.httpService.get(`/user?id=${id}`);
-        return response.data;
+        return new User(response.data);
     }
 
     async getUserById(id){

@@ -26,4 +26,8 @@ export class MedalhaFetcher extends DataFetcher {
     const data = await this.httpService.get("/OlymFollow/medalhas/latest");
     return data.map((medal) => new QuadroMedalha(medal));
   }
+
+  async saveMedal(medalha) {
+    return await this.httpService.post("/OlymFollow/medalhas/cadastrar", medalha);
+  }
 }

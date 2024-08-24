@@ -21,11 +21,11 @@ export const useRegister = () => {
     useState(false);
   const [isInvalidPassword, setIsInvalidPassword] = useState(false);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (setIsLoading) => {
     validateCredentials();
 
     if(isInvalidPassword) return;
-
+    setIsLoading(true);
     await axios.post("http://localhost:8084/olympics-follow-api/user/register", {
       email: register.email,
       password: register.password,
@@ -46,7 +46,6 @@ export const useRegister = () => {
       });
     }).then(response => {
       if(response.status === 201) {
-        console.log(response)
         let token = handleToken(response.headers['authorization']);
         let userID = response.headers['userid'];
         sessionStorage.setItem("token", token);

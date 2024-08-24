@@ -1,10 +1,19 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {CountryRow} from "./CountryRow.jsx";
 import "./paises.css"
 
 
 export const PaisesFavoritados = ({countries}) =>{
     const [selectedCountry, setSelectedCountry] = useState('');
+    const [countriesList, setCountriesList] = useState(countries);
+
+    useEffect(() => {
+        setCountriesList(countries)
+    }, [countries])
+
+    const removeRow = (id) => {
+        setCountriesList(countriesList.filter(row => row.id !== id));
+    };
 
     return (
         <>
@@ -30,7 +39,7 @@ export const PaisesFavoritados = ({countries}) =>{
                     }}
                 >
                     {
-                        countries.length != 0 ?
+                        countriesList.length !== 0 ?
                             <>
                                 <table className="quadro-medalhas">
                                     <thead>
@@ -51,9 +60,10 @@ export const PaisesFavoritados = ({countries}) =>{
                                     </thead>
                                     <tbody>
                                     {
-                                        countries.map(country => <CountryRow key={country.id} country={country}
+                                        countriesList.map(country => <CountryRow key={country.id} country={country}
                                                                              setSelectedCountry={setSelectedCountry}
-                                                                             selectedCountry={selectedCountry}/>)
+                                                                             selectedCountry={selectedCountry}
+                                                                             removeRow={removeRow}/>)
                                     }
                                     </tbody>
                                 </table>

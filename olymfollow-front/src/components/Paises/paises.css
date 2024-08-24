@@ -219,4 +219,45 @@ tr:hover {background-color: #ddd;}
 .close:hover {
     background-color: red;
 }
+dialog {
+    position: fixed;
+    top: 50%;
+    left: 34%;
+    transform: translate(-50%, -50%);
+    border: none;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 1000;
+}
 
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    margin:  10px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff80;
+}
+
+.dialog-medal input{
+  margin-bottom: 15px;
+}
+
+.dialog-medal select{
+    margin-bottom: 15px;
+}
