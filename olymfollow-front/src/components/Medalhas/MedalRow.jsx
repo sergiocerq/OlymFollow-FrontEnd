@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./medalhas.css";
 import { FetcherFactory } from "../../data/fetchers/FetcherFactory.js";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,8 @@ export const MedalRow = (
             numberOfGolds,
             numberOfSilvers,
             numberOfBronze,
-            numberOfMedal
+            numberOfMedal,
+            medalhas
         },
         setSelectedCountry,
         selectedCountry
@@ -29,12 +30,14 @@ export const MedalRow = (
     const hasToken = sessionStorage.getItem("token");
     const [selectedCountryID, setSelectedCountryID] = useState(id);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [height, setHeight] = useState("0px");
+    const contentRef = useRef(null);
+
 
     useEffect(() => {
-        if (isDialogOpen) {
-            console.log("Dialog opened with ID:", selectedCountryID);
-        }
-    }, [isDialogOpen, selectedCountryID]);
+        setHeight(isExpanded ? `${contentRef.current.scrollHeight}px` : "0px");
+    }, [isDialogOpen, selectedCountryID, isExpanded]);
 
     const openDialog = () => {
         setIsDialogOpen(true);
@@ -70,6 +73,10 @@ export const MedalRow = (
         });
     };
 
+    const toggleExpand = () => {
+        setIsExpanded(!isExpanded);
+    };
+
     return (
         <>
             {isDialogOpen && (<dialog open style={{
@@ -97,17 +104,18 @@ export const MedalRow = (
                 </div>
             </div>
         </dialog>)}
-            <tr>
+            <tr style={{cursor: "pointer"}}>
+                <td onClick={toggleExpand}>{isExpanded ? "↑" : "↓"}</td>
                 <td style={{
                     textAlign: "start"
-                }}>
+                }} onClick={toggleExpand}>
                     <img src={urlImage} alt={nome + " Bandeira"}/>
                     {nome}
                 </td>
-                <td>{numberOfGolds}</td>
-                <td>{numberOfSilvers}</td>
-                <td>{numberOfBronze}</td>
-                <td>{numberOfMedal}</td>
+                <td onClick={toggleExpand}>{numberOfGolds}</td>
+                <td onClick={toggleExpand}>{numberOfSilvers}</td>
+                <td onClick={toggleExpand}>{numberOfBronze}</td>
+                <td onClick={toggleExpand}>{numberOfMedal}</td>
                 <td>
                     <button className="mytooltip" onClick={openDialog}>
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -117,6 +125,51 @@ export const MedalRow = (
                         </svg>
                     </button>
                 </td>
+            </tr>
+            {isExpanded && (
+                <tr>
+                    <td colSpan="8" style={{ textAlign: "center" }}>
+                        <div
+                            ref={contentRef}
+                            style={{
+                            display: "flex",
+                            maxHeight: height,
+                            overflow: "hidden",
+                            transition: "max-height 0.5s ease"
+                        }}>
+                            <table>
+                                <tbody>
+                                {/* eslint-disable-next-line react/prop-types */}
+                                {medalhas.map((data, index) => (
+                                    <TableRow key={index} medal={data}/>
+                                ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            )}
+        </>
+    );
+}
+
+
+export const TableRow = (data) => {
+
+    return (
+        <>
+            <tr>
+                <td>
+                    <svg style={{
+                        margin: "10px"
+                    }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path
+                            d="M4.1 38.2C1.4 34.2 0 29.4 0 24.6C0 11 11 0 24.6 0L133.9 0c11.2 0 21.7 5.9 27.4 15.5l68.5 114.1c-48.2 6.1-91.3 28.6-123.4 61.9L4.1 38.2zm503.7 0L405.6 191.5c-32.1-33.3-75.2-55.8-123.4-61.9L350.7 15.5C356.5 5.9 366.9 0 378.1 0L487.4 0C501 0 512 11 512 24.6c0 4.8-1.4 9.6-4.1 13.6zM80 336a176 176 0 1 1 352 0A176 176 0 1 1 80 336zm184.4-94.9c-3.4-7-13.3-7-16.8 0l-22.4 45.4c-1.4 2.8-4 4.7-7 5.1L168 298.9c-7.7 1.1-10.7 10.5-5.2 16l36.3 35.4c2.2 2.2 3.2 5.2 2.7 8.3l-8.6 49.9c-1.3 7.6 6.7 13.5 13.6 9.9l44.8-23.6c2.7-1.4 6-1.4 8.7 0l44.8 23.6c6.9 3.6 14.9-2.2 13.6-9.9l-8.6-49.9c-.5-3 .5-6.1 2.7-8.3l36.3-35.4c5.6-5.4 2.5-14.8-5.2-16l-50.1-7.3c-3-.4-5.7-2.4-7-5.1l-22.4-45.4z"/>
+                    </svg>
+                </td>
+                <td style={{ padding: "10px" }}>{data.medal.medalha}</td>
+                <td style={{ padding: "10px" }}>{data.medal.nomeAtleta}</td>
+                <td style={{ padding: "10px" }}>{data.medal.esporte}</td>
             </tr>
         </>
     );

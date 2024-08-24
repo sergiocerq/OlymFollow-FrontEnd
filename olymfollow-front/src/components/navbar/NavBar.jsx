@@ -1,20 +1,20 @@
-import React from "react";
 import OlympicRings from "../../assets/Olympic_rings.svg";
-
 import "./navbar.css";
 import {useNavigate} from "react-router-dom";
 import {SelectPaises} from "../Paises/SelectPaises.jsx";
 import {SelectTipoMedalha} from "../Medalhas/SelectTipoMedalha.jsx";
-import {SelectEsportes} from "../Esportes/SelectEsportes.jsx";
 import {useMedalha} from "../Medalhas/MedalhasHook.jsx";
+import {useState} from "react";
+import {Loader} from "../loader/Loader.jsx";
 
-export const NavBar = (isAdmin) => {
+export const NavBar = ({isAdmin}) => {
     const hasToken = sessionStorage.getItem("token");
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
     const { medalha, setMedalha, handleSubmit} = useMedalha();
     
-    const setTipoMedalhaID = (tipoMedalhaID) => {
-        setMedalha({...medalha, tipoMedalhaID: tipoMedalhaID})
+    const setTipoMedalha= (tipoMedalha) => {
+        setMedalha({...medalha, tipoMedalha: tipoMedalha})
     }
 
     const setCountryID = (countryID) => {
@@ -64,7 +64,7 @@ export const NavBar = (isAdmin) => {
                 </button>
                 <div className="content">
                     <h3>Cadastrar Nova Medalha</h3>
-                    <SelectTipoMedalha setTipoMedalhaID={setTipoMedalhaID}/>
+                    <SelectTipoMedalha setTipoMedalha={setTipoMedalha}/>
 
                     <input type="text" name="" id="" placeholder={"Digite o nome do atleta"} onChange={(e) =>{
                         setMedalha({...medalha, nomeAtleta: e.target.value})
@@ -74,9 +74,13 @@ export const NavBar = (isAdmin) => {
                     <input type="text" name="" id="" placeholder={"Digite o esporte"} onChange={(e) =>{
                         setMedalha({...medalha, esporte: e.target.value})
                     }}/>
-                    <div className="actions">
-                        <a onClick={() => handleSubmit()} className="unsubscribe">Cadastrar</a>
-                    </div>
+                    {isLoading ? <div style={{
+                        padding: "30px",
+                        display: "flex",
+                        justifyContent: "center"
+                    }}><Loader/></div> : <div className="actions">
+                        <a onClick={() => handleSubmit(setIsLoading)} className="unsubscribe">Cadastrar</a>
+                    </div>}
                 </div>
             </dialog>
             <div
@@ -97,7 +101,7 @@ export const NavBar = (isAdmin) => {
                         <img width={100} src={OlympicRings} alt="Logo OlympicsFollow"/>
                     </div>
                     <div className="div-items-nav-bar">
-                        {isAdmin && (<p onClick={() => {
+                        {isAdmin === true && (<p onClick={() => {
                             document.getElementById('dialog-medal').showModal();
                         }}>
                             Adicionar Medalha

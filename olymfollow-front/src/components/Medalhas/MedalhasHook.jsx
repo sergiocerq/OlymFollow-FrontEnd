@@ -1,18 +1,17 @@
 import {FetcherFactory} from "../../data/fetchers/FetcherFactory.js";
 import {useState} from "react";
 import {toast} from "sonner";
-import {styleToastError} from "../../styles.js";
+import {styleToastError, styleToastSucess} from "../../styles.js";
 
 const fetcherFactory = new FetcherFactory();
 
 export const useMedalha = () => {
-    const [medalha, setMedalha] = useState({tipoMedalhaID : '', nomeAtleta: '', countryID: '', esporte: ''})
+    const [medalha, setMedalha] = useState({tipoMedalha : '', nomeAtleta: '', countryID: '', esporte: ''})
     const [isValidCredentials, setIsValidCredentials] = useState(true);
 
 
     const validateCredentials = () => {
-        console.log(medalha);
-        if(medalha.tipoMedalhaID === ""){
+        if(medalha.tipoMedalha === ""){
             toast.error("Selecione o tipo de medalha.", {
                 style: styleToastError,
                 duration: 3000,
@@ -43,12 +42,29 @@ export const useMedalha = () => {
             });
             setIsValidCredentials(false);
         }
-
-        if(!isValidCredentials) return;
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (setIsLoading) => {
         validateCredentials();
+        if(isValidCredentials){
+            setIsLoading(true)
+            let medalFetcher = fetcherFactory.createMedalhaFetcher()
+            let response = await medalFetcher.saveMedal(medalha)
+            document.getElementById('dialog-medal').close()
+            setIsLoading(false)
+            if(response.status !== 201){
+                toast.error("Ocorreu um erro ao cadastrar medalha", {
+                    style: styleToastError,
+                    duration: 3000,
+                });
+                return;
+            }
+
+            toast.success("Medalha Cadastrada com sucesso!", {
+                style: styleToastSucess,
+                duration: 3000,
+            });
+        }
     }
     return { medalha, setMedalha, handleSubmit};
 }

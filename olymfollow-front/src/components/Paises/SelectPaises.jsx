@@ -9,7 +9,6 @@ export const SelectPaises = ({setCountryID}) => {
     const [options, setOptions] = useState([]);
 
     const handleChange = (e) =>{
-        console.log(e.target.value);
         setCountryID(e.target.value);
     }
 

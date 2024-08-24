@@ -1,20 +1,19 @@
-import React from "react";
 import { useLogin } from "./LoginHooks";
 import { useNavigate } from "react-router-dom";
 import { Toaster } from "sonner";
 import Lottie from "lottie-react";
 import googleSVG from "../../assets/google-color-svgrepo-com.svg";
-import sportsLogin from "../../assets/LottieLanding.json";
 import animationLogin from "../../assets/AnimationLogin.json"
 import "./login.css";
-import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider  } from "firebase/auth";
-import auth from "../../config/firebaseConfig.js";
 import {useLoginGoogle} from "./LoginGoogleHook.jsx";
+import {useState} from "react";
+import {Loader} from "../loader/Loader.jsx";
 
 const Login = () => {
   const { login, setLogin, showPassword, setShowPassword, handleSubmit } =
     useLogin();
   const {loginGoogle} = useLoginGoogle();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -92,9 +91,12 @@ const Login = () => {
               )}
             </span>
             </div>
-            <button className="button" type="button" onClick={handleSubmit}>
+            {isLoading ? <div style={{
+              height: "75px",
+              margin: "35px"
+            }}><Loader/></div> : <button className="button" type="button" onClick={()=> handleSubmit(setIsLoading)}>
               Entrar
-            </button>
+            </button>}
             <p className="signup-link">
               Não possui conta?
               <a

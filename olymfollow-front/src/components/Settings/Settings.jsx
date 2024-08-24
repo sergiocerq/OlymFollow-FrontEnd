@@ -7,6 +7,7 @@ import { FetcherFactory } from '../../data/fetchers/FetcherFactory';
 import {UserInfo} from "../UserInfo/UserInfo.jsx";
 import userImageDefault from "../../assets/user-profile-icon.png"
 import {DangerZone} from "../DangeZone/DangeZone.jsx";
+import {Toaster} from "sonner";
 
 const fecherFactory = new FetcherFactory();
 
@@ -38,6 +39,7 @@ export const Settings = () => {
   return (
     <>
       {hasToken && <NavBar isAdmin={isAdmin}/>}
+        <Toaster position="top-right" />
         <div
             style={{
                 display: "flex",

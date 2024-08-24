@@ -5,7 +5,8 @@ import { Toaster } from "sonner";
 import googleSVG from "../../assets/google-color-svgrepo-com.svg";
 import animationLogin from "../../assets/AnimationLogin.json";
 import Lottie from "lottie-react";
-import React from "react";
+import React, {useState} from "react";
+import {Loader} from "../loader/Loader.jsx";
 
 const Register = () => {
   const {
@@ -20,6 +21,8 @@ const Register = () => {
     setShowConfirmationPassword,
   } = useRegister();
   const navigator = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const validatePassword = (value) => {
     setIsInvalidPassword(false);
@@ -170,9 +173,12 @@ const Register = () => {
               )}
             </span>
           </div>
-          <button className="button" type="button" onClick={handleSubmit}>
+          {isLoading ? <div style={{
+            height: "75px",
+            margin: "35px"
+          }}><Loader/></div> : <button className="button" type="button" onClick={() => handleSubmit(setIsLoading)}>
             Cadastrar
-          </button>
+          </button>}
           <p className="signup-link">
             Já possui conta?
             <a onClick={() => navigator("/login")} style={{color: "#2d9ffc"}}>

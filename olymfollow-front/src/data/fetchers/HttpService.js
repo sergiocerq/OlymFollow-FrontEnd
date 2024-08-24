@@ -59,8 +59,7 @@ export class HttpService {
 
   async delete(url) {
     try {
-      const response = await this.client.delete(url);
-      return response.data;
+      return await this.client.delete(url);
     } catch (error) {
       console.error(error);
       return [];

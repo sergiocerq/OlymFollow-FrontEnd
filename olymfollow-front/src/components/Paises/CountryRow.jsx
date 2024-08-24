@@ -28,9 +28,7 @@ export const CountryRow = (
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     useEffect(() => {
-        if (isDialogOpen) {
-            console.log("Dialog opened with ID:", selectedCountryID);
-        }
+        if (isDialogOpen) {}
     }, [isDialogOpen, selectedCountryID]);
 
     const openDialog = () => {
@@ -47,14 +45,18 @@ export const CountryRow = (
         const userFetcher = fetcherFactory.createUserFetcher();
         let response = await userFetcher.unsubscribe(selectedCountryID);
         closeDialog()
-        removeRow(selectedCountryID)
-        if (response.status === 200){
-            toast.error("Não possível seguir o país", {
+        if (response.status !== 200){
+            toast.error("Não possível efetuar a operação", {
                 style: styleToastError,
                 duration: 3000,
             });
             return;
         }
+        toast.success(response.data, {
+            style: styleToastError,
+            duration: 3000,
+        });
+        removeRow(selectedCountryID)
     };
 
     return (

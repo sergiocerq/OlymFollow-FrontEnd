@@ -30,12 +30,13 @@ export const useLogin = () => {
     }
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (setIsLoading) => {
     validateCredentials();
     if(isValidCredentials) {
-
+      setIsLoading(true)
       const loginFetcher = fetcherFactory.createLoginFetcher();
       const response = await loginFetcher.login(login.email, login.password);
+      setIsLoading(false)
       if(response.response && response.response.status === 401){
         toast.error("Login inválido", {
           style: styleToastError,
