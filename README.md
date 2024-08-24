@@ -46,7 +46,7 @@ Clone o projeto
 Entre no diretório do projeto
 
 ```bash
-  cd OlymFollow-FrontEnd
+  cd OlymFollow-FrontEnd/olymfollow-front
 ```
 
 Instale as dependências
