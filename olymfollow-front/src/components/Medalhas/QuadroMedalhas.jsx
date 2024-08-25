@@ -5,8 +5,7 @@ import "./medalhas.css";
 import { MedalRow } from "./MedalRow.jsx";
 import { Toaster } from "sonner";
 import { Loader } from "../loader/Loader.jsx";
-
-const fetcherFactory = new FetcherFactory();
+import { useQuadroMedalhas } from "./useQuadroMedalhas.jsx";
 
 /**
  * Componente QuadroMedalhas para exibir e gerenciar o quadro de medalhas.
@@ -51,7 +50,6 @@ export const QuadroMedalhas = () => {
           }}
         >
           {isLoading && <Loader />}
-
           {!isLoading && hasSomeMedal && (
             <table className="quadro-medalhas">
               <thead
@@ -97,36 +95,4 @@ export const QuadroMedalhas = () => {
       </div>
     </>
   );
-};
-
-const useQuadroMedalhas = () => {
-  const [quadroMedalhas, setQuadroMedalhas] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchMedalhas = async () => {
-      const medalhaFetcher = fetcherFactory.createMedalhaFetcher();
-      const medalhas = await medalhaFetcher.getMedals();
-      medalhas.sort((a, b) => {
-        if (b.numberOfGolds !== a.numberOfGolds)
-          return b.numberOfGolds - a.numberOfGolds;
-        return b.numberOfMedal - a.numberOfMedal;
-      });
-      setIsLoading(false);
-      
-      setQuadroMedalhas(medalhas);
-    };
-    fetchMedalhas();
-  }, []);
-
-  const hasSomeMedal = quadroMedalhas.length > 0;
-
-  return {
-    quadroMedalhas,
-    selectedCountry,
-    setSelectedCountry,
-    isLoading,
-    hasSomeMedal,
-  };
 };

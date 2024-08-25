@@ -8,7 +8,8 @@ import { UserInfo } from "../UserInfo/UserInfo.jsx";
 import userImageDefault from "../../assets/user-profile-icon.png";
 import { DangerZone } from "../DangeZone/DangeZone.jsx";
 import { Toaster } from "sonner";
-import gridPhoto from "../../assets/grid-user-info.png"
+import gridPhoto from "../../assets/grid-user-info.png";
+import { motion } from "framer-motion";
 
 const fecherFactory = new FetcherFactory();
 
@@ -50,13 +51,11 @@ export const Settings = () => {
     <>
       {hasToken && <NavBar isAdmin={isAdmin} />}
       <Toaster position="top-right" />
-      <div
-        className="main-div-settings"
-      >
+      <div className="main-div-settings">
         <ul className="list-settings">
-          <li>
+          <motion.li>
             <UserInfo nome={nome} email={email} userImage={userImage} />
-          </li>
+          </motion.li>
           <li>
             <PaisesFavoritados countries={favoritesCountries} />
           </li>
@@ -64,24 +63,6 @@ export const Settings = () => {
             <DangerZone />
           </li>
         </ul>
-      </div>
-    </>
-  );
-};
-
-const Divider = () => {
-  return (
-    <>
-      <div className="divider">
-        {Array.from({ length: 33 }).map((_, index) => (
-          <div
-            className="divider-child"
-            key={index}
-            style={{
-              borderLeft: index % 11 === 0 ? "1px solid black" : "none",
-            }}
-          />
-        ))}
       </div>
     </>
   );
