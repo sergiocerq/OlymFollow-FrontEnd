@@ -194,7 +194,6 @@ export const MedalRow = ({
 };
 
 export const TableRow = (data) => {
-  console.log(data.medal.medalha);
 
   const [colorMedal, setColorMedal] = useState("");
 
