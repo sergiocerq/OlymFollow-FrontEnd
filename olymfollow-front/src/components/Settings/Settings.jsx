@@ -8,6 +8,7 @@ import { UserInfo } from "../UserInfo/UserInfo.jsx";
 import userImageDefault from "../../assets/user-profile-icon.png";
 import { DangerZone } from "../DangeZone/DangeZone.jsx";
 import { Toaster } from "sonner";
+import gridPhoto from "../../assets/grid-user-info.png"
 
 const fecherFactory = new FetcherFactory();
 
@@ -23,8 +24,6 @@ const fecherFactory = new FetcherFactory();
  * @returns {JSX.Element} O JSX a ser renderizado, que contém as configurações do usuário.
  */
 export const Settings = () => {
-  const navigate = useNavigate();
-
   const hasToken = sessionStorage.getItem("token");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -52,18 +51,19 @@ export const Settings = () => {
       {hasToken && <NavBar isAdmin={isAdmin} />}
       <Toaster position="top-right" />
       <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: " center",
-          gap: "2rem",
-          marginTop: "7rem",
-        }}
+        className="main-div-settings"
       >
-        <UserInfo nome={nome} email={email} userImage={userImage} />
-        <PaisesFavoritados countries={favoritesCountries} />
-        <DangerZone />
-        <Divider />
+        <ul className="list-settings">
+          <li>
+            <UserInfo nome={nome} email={email} userImage={userImage} />
+          </li>
+          <li>
+            <PaisesFavoritados countries={favoritesCountries} />
+          </li>
+          <li>
+            <DangerZone />
+          </li>
+        </ul>
       </div>
     </>
   );

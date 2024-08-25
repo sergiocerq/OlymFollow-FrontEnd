@@ -186,3 +186,25 @@ button:hover {
   transition-duration: .3s;
 }
 
+.list-settings {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  gap: 5rem;
+  margin-top: 5%;
+  
+  > li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+

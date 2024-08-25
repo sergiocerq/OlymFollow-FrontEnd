@@ -17,26 +17,13 @@ const fetcherFactory = new FetcherFactory();
  * @returns {JSX.Element} O JSX do componente QuadroMedalhas.
  */
 export const QuadroMedalhas = () => {
-  const [quadroMedalhas, setQuadroMedalhas] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchMedalhas = async () => {
-      const medalhaFetcher = fetcherFactory.createMedalhaFetcher();
-      const medalhas = await medalhaFetcher.getMedals();
-      medalhas.sort((a, b) => {
-        if (b.numberOfGolds !== a.numberOfGolds)
-          return b.numberOfGolds - a.numberOfGolds;
-        return b.numberOfMedal - a.numberOfMedal;
-      });
-      setIsLoading(false);
-      setQuadroMedalhas(medalhas);
-    };
-    fetchMedalhas();
-  }, []);
-
-  console.log(quadroMedalhas)
+  const {
+    quadroMedalhas,
+    selectedCountry,
+    setSelectedCountry,
+    isLoading,
+    hasSomeMedal,
+  } = useQuadroMedalhas();
 
   return (
     <>
@@ -48,6 +35,7 @@ export const QuadroMedalhas = () => {
           gap: "3rem",
           justifyContent: "center",
           alignItems: "center",
+          width: "90%",
         }}
       >
         <h1>Quadro de Medalhas</h1>
@@ -59,11 +47,12 @@ export const QuadroMedalhas = () => {
             alignItems: "center",
             maxHeight: "73vh",
             overflow: "auto",
+            width: "100%",
           }}
         >
-          {isLoading ? (
-            <Loader />
-          ) : (
+          {isLoading && <Loader />}
+
+          {!isLoading && hasSomeMedal && (
             <table className="quadro-medalhas">
               <thead
                 style={{
@@ -108,4 +97,36 @@ export const QuadroMedalhas = () => {
       </div>
     </>
   );
+};
+
+const useQuadroMedalhas = () => {
+  const [quadroMedalhas, setQuadroMedalhas] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMedalhas = async () => {
+      const medalhaFetcher = fetcherFactory.createMedalhaFetcher();
+      const medalhas = await medalhaFetcher.getMedals();
+      medalhas.sort((a, b) => {
+        if (b.numberOfGolds !== a.numberOfGolds)
+          return b.numberOfGolds - a.numberOfGolds;
+        return b.numberOfMedal - a.numberOfMedal;
+      });
+      setIsLoading(false);
+      
+      setQuadroMedalhas(medalhas);
+    };
+    fetchMedalhas();
+  }, []);
+
+  const hasSomeMedal = quadroMedalhas.length > 0;
+
+  return {
+    quadroMedalhas,
+    selectedCountry,
+    setSelectedCountry,
+    isLoading,
+    hasSomeMedal,
+  };
 };

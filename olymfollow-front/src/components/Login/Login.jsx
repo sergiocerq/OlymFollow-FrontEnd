@@ -8,6 +8,7 @@ import { useLoginGoogle } from "./LoginGoogleHook.jsx";
 import { useState } from "react";
 import { Loader } from "../loader/Loader.jsx";
 import "./login.css";
+import { motion } from "framer-motion";
 
 /**
  * Componente Login.
@@ -22,7 +23,7 @@ import "./login.css";
  * - `useNavigate`: Hook do React Router usado para redirecionamento de navegação.
  *
  * @component
- * 
+ *
  * @see {@link http://localhost:5173/login} para ver a página de login que utiliza este componente.
  *
  * @example
@@ -43,19 +44,46 @@ const Login = () => {
     <>
       <Toaster position="top-right" />
       <div className="main-div-login">
-        <div className="div-lottie-login">
+        <motion.div
+          className="div-lottie-login"
+          initial={{ x: -1000 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.4 }}
+        >
           <Lottie animationData={animationLogin} />
-        </div>
+        </motion.div>
         <form>
-          <h1>Entre na sua conta</h1>
-          <p>Selecione um método para realizar o login:</p>
-          <div className="div-outros-metodos-login">
+          <motion.h1
+            initial={{ x: 1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+          >
+            Entre na sua conta
+          </motion.h1>
+          <motion.p
+            initial={{ x: 1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
+          >
+            Selecione um método para realizar o login:
+          </motion.p>
+          <motion.div
+            className="div-outros-metodos-login"
+            initial={{ x: 1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
             <button type="button" onClick={() => loginGoogle()}>
               <img src={googleSVG} alt="" />
               <p>Google</p>
             </button>
-          </div>
-          <div className="div-input-login">
+          </motion.div>
+          <motion.div
+            className="div-input-login"
+            initial={{ x: 1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.2, delay: 0.35 }}
+          >
             <input
               placeholder="Digite o email"
               type="email"
@@ -74,8 +102,13 @@ const Login = () => {
                 <path d="M256 64C150 64 64 150 64 256s86 192 192 192c17.7 0 32 14.3 32 32s-14.3 32-32 32C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256l0 32c0 53-43 96-96 96c-29.3 0-55.6-13.2-73.2-33.9C320 371.1 289.5 384 256 384c-70.7 0-128-57.3-128-128s57.3-128 128-128c27.9 0 53.7 8.9 74.7 24.1c5.7-5 13.1-8.1 21.3-8.1c17.7 0 32 14.3 32 32l0 80 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32c0-106-86-192-192-192zm64 192a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z" />
               </svg>
             </span>
-          </div>
-          <div className="div-input-login">
+          </motion.div>
+          <motion.div
+            className="div-input-login"
+            initial={{ x: 1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.2, delay: 0.4 }}
+          >
             <input
               placeholder="Digite a senha"
               autoComplete="password"
@@ -110,39 +143,59 @@ const Login = () => {
                 </>
               )}
             </span>
-          </div>
+          </motion.div>
           {isLoading ? (
-            <div
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
               style={{
                 height: "75px",
                 margin: "35px",
               }}
             >
               <Loader />
-            </div>
+            </motion.div>
           ) : (
-            <button
+            <motion.button
+              initial={{ x: 1000 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.3, delay: 0.4 }}
               className="button"
               type="button"
               onClick={() => handleSubmit(setIsLoading)}
             >
               Entrar
-            </button>
+            </motion.button>
           )}
-          <p className="signup-link">
+          <motion.p
+            className="signup-link"
+            initial={{ x: 1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
             Não possui conta?
-            <a
+            <motion.a
+              initial={{ x: 1000 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
               onClick={() => navigate("/register")}
               style={{ color: "#2d9ffc" }}
             >
               Criar uma conta
-            </a>
-          </p>
-          <button className="buttonBack" onClick={() => navigate("/")}>
+            </motion.a>
+          </motion.p>
+          <motion.button
+            className="buttonBack"
+            onClick={() => navigate("/")}
+            initial={{ x: 1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.3, delay: 0.5 }}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
               <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
             </svg>
-          </button>
+          </motion.button>
         </form>
       </div>
     </>
