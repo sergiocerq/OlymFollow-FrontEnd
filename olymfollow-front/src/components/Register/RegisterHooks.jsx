@@ -59,7 +59,17 @@ export const useRegister = () => {
       email: register.email,
       password: register.password,
       username: register.username,
-    }).catch(reason => {
+    })
+    .then(response => {
+      if(response.status === 201) {
+        let token = handleToken(response.headers['authorization']);
+        let userID = response.headers['userid'];
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("userID", userID);
+        navigator("/");
+      }
+    })
+    .catch(reason => {
       if(reason.response.status === 400){
         reason.response.data.foreach((value) => {
           toast.error(value, {
@@ -69,19 +79,12 @@ export const useRegister = () => {
         });
         return;
       }
+      setIsLoading(false);
       toast.error(reason.response.data, {
         style: styleToastError,
         duration: 3000,
       });
-    }).then(response => {
-      if(response.status === 201) {
-        let token = handleToken(response.headers['authorization']);
-        let userID = response.headers['userid'];
-        sessionStorage.setItem("token", token);
-        sessionStorage.setItem("userID", userID);
-        navigator("/");
-      }
-    });
+    })
   };
 
   /**
